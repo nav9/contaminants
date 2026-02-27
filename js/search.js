@@ -47,3 +47,18 @@ const SearchEngine = {
     }
 
 };
+
+document.getElementById("submit-btn")
+    .addEventListener("click", () => {
+
+    const query = document.getElementById("search-input")
+        .value.toLowerCase();
+
+    d3.selectAll("circle")
+        .attr("stroke-width", d =>
+            d.label.toLowerCase().includes(query) ? 3 : 1
+        )
+        .attr("stroke", d =>
+            d.label.toLowerCase().includes(query) ? "#00ffff" : "#111"
+        );
+});

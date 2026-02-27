@@ -132,14 +132,70 @@ function showDetails(node) {
 
     const container = document.getElementById("info-content");
 
-    const div = document.createElement("div");
-    div.className = "mb-3 p-2 border border-secondary rounded";
-    div.innerHTML = `
-        <strong>${node.label}</strong><br>
-        Type: ${node.type}<br>
-        ${node.data?.description || ""}
+    const card = document.createElement("div");
+    card.className = "detail-card";
+
+    let citationsHTML = "";
+    if (node.data?.citations) {
+        citationsHTML = `
+            <div class="citation">
+                <strong>Sources:</strong><br>
+                ${node.data.citations.join("<br>")}
+            </div>
+        `;
+    }
+
+    card.innerHTML = `
+        <div class="detail-title">${node.label}</div>
+        <div>Type: ${node.type}</div>
+        ${node.data?.description ? `<div>${node.data.description}</div>` : ""}
+        ${node.data?.mechanisms ? `<div><strong>Mechanisms:</strong> ${node.data.mechanisms.join(", ")}</div>` : ""}
+        ${node.data?.effects ? `<div><strong>Effects:</strong> ${node.data.effects.join(", ")}</div>` : ""}
+        ${node.data?.evidence_level ? `<div><strong>Evidence:</strong> ${node.data.evidence_level}</div>` : ""}
+        ${citationsHTML}
     `;
 
-    // Add new content to TOP
-    container.insertBefore(div, container.firstChild);
-};
+    container.insertBefore(card, container.firstChild);
+}
+
+document.getElementById("confidence-slider")
+    .addEventListener("input", function () {
+
+    const level = parseInt(this.value);
+
+    simulation.nodes().forEach(n => {
+        if (!n.data?.evidence_level) return;
+
+        const strengthMap = {
+            "limited": 1,
+            "observational_association": 2,
+            "moderate_human_epidemiology": 3,
+            "strong_human_data": 4,
+            "strong_human_carcinogen": 5
+        };
+
+        const score = strengthMap[n.data.evidence_level] || 1;
+
+        n.hidden = score < level;
+    });
+
+    d3.selectAll("circle")
+        .style("display", d => d.hidden ? "none" : "block");
+
+});
+
+document.getElementById("gender-filter")
+    .addEventListener("change", function() {
+
+    const gender = this.value;
+
+    simulation.nodes().forEach(n => {
+        if (!n.data?.gender_specific) return;
+
+        n.hidden = (gender !== "all" &&
+                    n.data.gender_specific !== gender);
+    });
+
+    d3.selectAll("circle")
+        .style("display", d => d.hidden ? "none" : "block");
+});
