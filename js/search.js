@@ -1,64 +1,139 @@
-// js/search.js
+// Levenshtein distance algorithm for string matching
+function levenshteinDistance(a, b) {
+    if (a.length === 0) return b.length;
+    if (b.length === 0) return a.length;
 
-const SearchEngine = {
+    const matrix = [];
 
-    normalize(str) {
-        return str.toLowerCase().trim();
-    },
+    for (let i = 0; i <= b.length; i++) {
+        matrix[i] = [i];
+    }
 
-    scoreMatch(query, text) {
-        const distance = levenshtein(query, text);
-        return distance / Math.max(query.length, text.length);
-    },
+    for (let j = 0; j <= a.length; j++) {
+        matrix[0][j] = j;
+    }
 
-    search(query) {
-        query = this.normalize(query);
-        if (!query || !DataStore.loaded) return [];
+    for (let i = 1; i <= b.length; i++) {
+        for (let j = 1; j <= a.length; j++) {
+            if (b.charAt(i - 1) === a.charAt(j - 1)) {
+                matrix[i][j] = matrix[i - 1][j - 1];
+            } else {
+                matrix[i][j] = Math.min(
+                    matrix[i - 1][j - 1] + 1,
+                    Math.min(matrix[i][j - 1] + 1, matrix[i - 1][j] + 1)
+                );
+            }
+        }
+    }
 
-        const cached = SearchCache.get(query);
-        if (cached) return cached;
+    return matrix[b.length][a.length];
+}
 
-        const results = [];
+const SearchModule = (function () {
+    let wordCache = new Map();
+    let activeTags = new Set();
 
-        DataStore.nodes.forEach(node => {
-            let bestScore = Infinity;
+    function search(query) {
+        if (!query) return [];
 
-            const fields = [
-                node.name,
-                ...(node.aliases || []),
-                ...(node.body_effects || [])
-            ];
+        query = query.toLowerCase();
+        let matches = [];
 
-            fields.forEach(field => {
-                if (!field) return;
-                const score = this.scoreMatch(query, this.normalize(field));
-                if (score < bestScore) bestScore = score;
-            });
+        DATA.forEach(item => {
+            let score = Infinity;
 
-            if (bestScore < 0.6) {
-                results.push({ node, score: bestScore });
+            // Match name
+            const nameScore = calculateMatchScore(query, item.name.toLowerCase());
+            score = Math.min(score, nameScore);
+
+            // Match aliases
+            if (item.aliases) {
+                item.aliases.forEach(alias => {
+                    score = Math.min(score, calculateMatchScore(query, alias.toLowerCase()));
+                });
+            }
+
+            // Match description and effects for symptoms/diseases
+            if (item.description && item.description.toLowerCase().includes(query)) {
+                score = Math.min(score, 2); // Boost for partial match in description
+            }
+
+            if (item.effects) {
+                item.effects.forEach(effect => {
+                    if (effect.toLowerCase().includes(query)) {
+                        score = Math.min(score, 3);
+                    }
+                });
+            }
+
+            if (score < 5 || (query.length > 2 && item.name.toLowerCase().includes(query))) {
+                matches.push({ item, score });
             }
         });
 
-        results.sort((a, b) => a.score - b.score);
-
-        SearchCache.set(query, results);
-        return results;
+        return matches.sort((a, b) => a.score - b.score);
     }
 
-};
+    function calculateMatchScore(query, target) {
+        if (target === query) return 0;
+        if (target.startsWith(query)) return 1;
+        if (target.includes(query)) return 2;
+        return levenshteinDistance(query, target);
+    }
 
-document.getElementById("submit-btn")
-    .addEventListener("click", () => {
+    function addTag(item) {
+        if (activeTags.has(item.id)) return false;
+        activeTags.add(item.id);
 
-    const query = document.getElementById("search-input")
-        .value.toLowerCase();
+        const tag = $(`<div class="tag tag-${item.type || 'default'}" data-id="${item.id}" style="background-color: var(--color-${item.type || 'default'})">
+            ${item.name}
+            <i class="fas fa-times close-tag"></i>
+        </div>`);
 
-    d3.selectAll("circle")
-        .attr("stroke-width", d =>
-            d.label.toLowerCase().includes(query) ? 3 : 1
-        )
-        .attr("stroke", d =>
-            d.label.toLowerCase().includes(query) ? "#00ffff" : "#111"
-        );
-});
+        // Ensure good contrast for tag text
+        const categoryColor = getComputedStyle(document.documentElement).getPropertyValue(`--color-${item.type}`).trim();
+        tag.css('color', getContrastColor(categoryColor));
+
+        tag.find('.close-tag').on('click', function () {
+            removeTag(item.id);
+        });
+
+        $('#active-tags').append(tag);
+        $(document).trigger('tagsChanged', [Array.from(activeTags)]);
+        return true;
+    }
+
+    function removeTag(id) {
+        activeTags.delete(id);
+        $(`.tag[data-id="${id}"]`).remove();
+        $(document).trigger('tagsChanged', [Array.from(activeTags)]);
+    }
+
+    function getContrastColor(hexColor) {
+        if (!hexColor || hexColor === 'transparent') return '#000';
+
+        // Simple YIQ brightness check
+        let r, g, b;
+        if (hexColor.startsWith('#')) {
+            const hex = hexColor.slice(1);
+            r = parseInt(hex.substr(0, 2), 16);
+            g = parseInt(hex.substr(2, 2), 16);
+            b = parseInt(hex.substr(4, 2), 16);
+        } else if (hexColor.startsWith('rgb')) {
+            const matches = hexColor.match(/\d+/g);
+            r = matches[0]; g = matches[1]; b = matches[2];
+        } else {
+            return '#000';
+        }
+
+        const yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+        return (yiq >= 128) ? '#000' : '#fff';
+    }
+
+    return {
+        search,
+        addTag,
+        removeTag,
+        getActiveTags: () => Array.from(activeTags)
+    };
+})();
