@@ -45,10 +45,20 @@ const VisualizationModule = (function () {
         if (nodes.length === 0) return;
 
         simulation = d3.forceSimulation(nodes)
-            .force('link', d3.forceLink(links).id(d => d.id).distance(100))
-            .force('charge', d3.forceManyBody().strength(-300))
+            .force('link', d3.forceLink(links).id(d => d.id).distance(60))
+            .force('charge', d3.forceManyBody().strength(-200))
             .force('center', d3.forceCenter(width / 2, height / 2))
-            .force('collision', d3.forceCollide().radius(50));
+            .force('collision', d3.forceCollide().radius(40))
+            .force('x', d3.forceX().x(d => {
+                const categories = ['pesticide', 'poison', 'heavy-metal', 'adulterant', 'disease', 'symptom', 'medicine', 'remedy', 'food', 'place'];
+                const index = categories.indexOf(d.category);
+                return (index % 3) * (width / 3) + (width / 6);
+            }).strength(0.1))
+            .force('y', d3.forceY().y(d => {
+                const categories = ['pesticide', 'poison', 'heavy-metal', 'adulterant', 'disease', 'symptom', 'medicine', 'remedy', 'food', 'place'];
+                const index = categories.indexOf(d.category);
+                return Math.floor(index / 3) * (height / 4) + (height / 8);
+            }).strength(0.1));
 
         const link = g.append('g')
             .attr('class', 'links')
@@ -74,7 +84,12 @@ const VisualizationModule = (function () {
 
         node.append('circle')
             .attr('r', d => d.type === 'primary' ? 12 : 8)
-            .attr('fill', d => `var(--color-${d.category})`)
+            .attr('fill', d => {
+                const purpleTypes = ['pesticide', 'fungicide', 'herbicide', 'poison'];
+                if (purpleTypes.includes(d.category)) return 'var(--color-poison)';
+                if (d.category === 'remedy') return 'var(--color-medicine)';
+                return `var(--color-${d.category})`;
+            })
             .attr('stroke', '#fff')
             .attr('stroke-width', 2);
 

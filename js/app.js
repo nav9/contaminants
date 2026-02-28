@@ -1,6 +1,8 @@
 $(document).ready(function () {
     // Initialize components
-    VisualizationModule.updateGraph([]);
+    // Initialize components with all nodes shown by default
+    const allIds = DATA.map(d => d.id);
+    VisualizationModule.updateGraph(allIds);
 
     // UI Elements
     const $searchInput = $('#search-input');
@@ -13,13 +15,18 @@ $(document).ready(function () {
     const $disclaimer = $('#disclaimer-banner');
     const $closeDisclaimer = $('#close-disclaimer');
 
+    // Remove minimized class by default
+    $sidebar.removeClass('minimized');
+    $toggleSidebar.html('<i class="fas fa-chevron-right"></i>');
+
     // Disclaimer logic
     $closeDisclaimer.on('click', () => $disclaimer.hide());
 
     // Sidebar logic
     $toggleSidebar.on('click', () => {
         $sidebar.toggleClass('minimized');
-        const icon = $sidebar.hasClass('minimized') ? 'fa-chevron-left' : 'fa-chevron-right';
+        const isMinimized = $sidebar.hasClass('minimized');
+        const icon = isMinimized ? 'fa-chevron-left' : 'fa-chevron-right';
         $toggleSidebar.html(`<i class="fas ${icon}"></i>`);
     });
 
@@ -142,7 +149,12 @@ $(document).ready(function () {
                 <div class="detail-section">
                     <h4>Citations</h4>
                     <small>
-                        ${data.citations.map(c => `<p>${c}</p>`).join('')}
+                        ${data.citations.map(c => {
+                if (c.startsWith('http')) {
+                    return `<p><a href="${c}" target="_blank" style="color: var(--accent-color); word-break: break-all;">${c}</a></p>`;
+                }
+                return `<p>${c}</p>`;
+            }).join('')}
                     </small>
                 </div>
             `;

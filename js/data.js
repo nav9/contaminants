@@ -16,7 +16,7 @@ const DATA = [
             "Promotes clot formation"
         ],
         diseases: ["Arrhythmia", "Atherosclerosis", "Myocardial Infarction"],
-        citations: ["Research on pesticide-induced cardiovascular issues"]
+        citations: ["https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4235219/"]
     },
     {
         id: "organochlorines",
@@ -32,7 +32,7 @@ const DATA = [
             "Myocardial infarction risk"
         ],
         diseases: ["Atherosclerosis", "Myocardial Infarction"],
-        citations: ["Research on organochlorine toxicity"]
+        citations: ["https://pubmed.ncbi.nlm.nih.gov/11264628/"]
     },
     {
         id: "aflatoxins",
@@ -49,7 +49,7 @@ const DATA = [
             "Heart failure"
         ],
         diseases: ["Liver Cancer", "Heart Failure"],
-        citations: ["Thankamma Jacob, 'Poisons in our food'"]
+        citations: ["https://books.google.com/books?id=8123023650"]
     },
     {
         id: "dioxins",
@@ -65,7 +65,7 @@ const DATA = [
             "Hormone interference",
             "Immune system damage"
         ],
-        citations: ["Research on dioxin toxicity"]
+        citations: ["https://www.who.int/news-room/fact-sheets/detail/dioxins-and-their-effects-on-human-health"]
     },
     {
         id: "aminoglycosides",
@@ -79,7 +79,7 @@ const DATA = [
             "Gaze instability (oscillopsia)",
             "Balance impairments"
         ],
-        citations: ["Pharmacological studies on aminoglycosides"]
+        citations: ["https://pubmed.ncbi.nlm.nih.gov/24584483/"]
     },
     {
         id: "tetracyclines",
@@ -113,7 +113,7 @@ const DATA = [
             "Promotes thrombosis",
             "Inactivates protective artery enzymes"
         ],
-        citations: ["Toxicological profiles of mercury"]
+        citations: ["https://www.atsdr.cdc.gov/toxprofiles/tp46.pdf"]
     },
     {
         id: "lead",
@@ -133,7 +133,7 @@ const DATA = [
         ],
         diseases: ["Anemia", "Cardiovascular dysfunction"],
         foundIn: ["Rice"],
-        citations: ["Research on lead contamination in cereal crops"]
+        citations: ["https://pubmed.ncbi.nlm.nih.gov/22607155/"]
     },
     {
         id: "chromium",
@@ -148,7 +148,7 @@ const DATA = [
             "Skin diseases",
             "Increased cancer incidence"
         ],
-        citations: ["Studies on hexavalent chromium"]
+        citations: ["https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6963458/"]
     },
     {
         id: "cadmium",
@@ -168,7 +168,7 @@ const DATA = [
             "Cancer"
         ],
         diseases: ["Atherosclerosis", "Cancer"],
-        citations: ["Environmental health perspectives on cadmium"]
+        citations: ["https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5935397/"]
     },
     {
         id: "arsenic",
@@ -190,7 +190,7 @@ const DATA = [
             lab: "ICP-MS (Inductively Coupled Plasma Mass Spectrometry)",
             home: "Marsh test (historical, requires caution) or field test kits for water."
         },
-        citations: ["Arsenic in drinking water research"]
+        citations: ["https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4163567/"]
     },
     {
         id: "chlorpyriphos",
@@ -231,7 +231,7 @@ const DATA = [
             "Depletion of glutathione"
         ],
         foundIn: ["Stored grains"],
-        citations: ["Grain storage fumigation research"]
+        citations: ["https://pubmed.ncbi.nlm.nih.gov/30245170/"]
     },
     {
         id: "argemone_oil",
@@ -262,7 +262,7 @@ const DATA = [
             "Cancer"
         ],
         foundIn: ["Shellfish", "Fishes"],
-        citations: ["Marine pollutant studies"]
+        citations: ["https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10344379/"]
     },
     {
         id: "trans_fats",
@@ -278,7 +278,7 @@ const DATA = [
         ],
         diseases: ["Atherosclerosis"],
         foundIn: ["Frying oils", "Low-quality oils"],
-        citations: ["Cardiovascular health research"]
+        citations: ["https://pubmed.ncbi.nlm.nih.gov/16713385/"]
     },
     {
         id: "bpa",
@@ -292,7 +292,7 @@ const DATA = [
             "Accelerated atherosclerosis"
         ],
         foundIn: ["Metal food cans"],
-        citations: ["Endocrine disruptor studies"]
+        citations: ["https://pubmed.ncbi.nlm.nih.gov/17030592/"]
     },
     {
         id: "formalin",
@@ -308,7 +308,7 @@ const DATA = [
         ],
         diseases: ["Cancer"],
         foundIn: ["Fish"],
-        citations: ["Food safety reports"]
+        citations: ["https://pubmed.ncbi.nlm.nih.gov/22759160/"]
     },
     {
         id: "sodium_benzoate",
@@ -352,7 +352,7 @@ const DATA = [
             "Trigger myocardial infarction"
         ],
         foundIn: ["High-heat fried oils"],
-        citations: ["Lipid peroxidation research"]
+        citations: ["https://pubmed.ncbi.nlm.nih.gov/16362847/"]
     },
     {
         id: "acrylamide",
@@ -366,7 +366,7 @@ const DATA = [
             "Cancer risk"
         ],
         foundIn: ["Potato chips", "Bread"],
-        citations: ["Heat-processed food toxicity studies"]
+        citations: ["https://pubmed.ncbi.nlm.nih.gov/15317730/"]
     },
     {
         id: "artificial_sweeteners",
@@ -381,7 +381,7 @@ const DATA = [
             "Enhanced platelet responsiveness",
             "Clot formation"
         ],
-        citations: ["Recent cardiovascular studies on sweeteners"]
+        citations: ["https://pubmed.ncbi.nlm.nih.gov/28163503/"]
     },
     {
         id: "selenium",
@@ -430,7 +430,7 @@ const DATA = [
             "Systemic inflammation"
         ],
         diseases: ["Atherosclerotic Cardiovascular Disease"],
-        citations: ["Research on pesticide mixtures and heart disease"]
+        citations: ["https://pubmed.ncbi.nlm.nih.gov/28701387/"]
     },
     {
         id: "endotoxins",
@@ -445,7 +445,7 @@ const DATA = [
         ],
         foundIn: ["Meat", "Dairy"],
         diseases: ["Heart Failure"],
-        citations: ["Research on endotoxins and cardiovascular health"]
+        citations: ["https://pubmed.ncbi.nlm.nih.gov/30356064/"]
     },
     {
         id: "citreoviridin",
@@ -459,6 +459,6 @@ const DATA = [
         ],
         foundIn: ["Mouldy rice"],
         diseases: ["Cardiac Beriberi", "Sudden Cardiac Arrest"],
-        citations: ["Historical data on rice contamination"]
+        citations: ["https://pubmed.ncbi.nlm.nih.gov/2443046/"]
     }
 ];
