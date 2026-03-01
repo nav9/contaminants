@@ -1,8 +1,7 @@
 $(document).ready(function () {
     // Initialize components
     // Initialize components with all nodes shown by default
-    const allIds = DATA.map(d => d.id);
-    VisualizationModule.updateGraph(allIds);
+    VisualizationModule.updateGraph();
 
     // UI Elements
     const $searchInput = $('#search-input');
@@ -15,6 +14,9 @@ $(document).ready(function () {
     const $disclaimer = $('#disclaimer-banner');
     const $closeDisclaimer = $('#close-disclaimer');
     const $resetSearchBtn = $('#reset-search');
+    const $helpBtn = $('#help-btn');
+    const $helpModal = $('#help-modal');
+    const $closeModal = $('.close-modal');
 
     // Remove minimized class by default
     $sidebar.removeClass('minimized');
@@ -62,6 +64,18 @@ $(document).ready(function () {
 
         // Reset sidebar
         $sidebarContent.html('<p class="placeholder-text">Click on a node in the graph to view details.</p>');
+
+        // Reset zoom to fit
+        VisualizationModule.zoomToFit();
+    });
+
+    // Help Modal logic
+    $helpBtn.on('click', () => $helpModal.show());
+    $closeModal.on('click', () => $helpModal.hide());
+    $(window).on('click', (event) => {
+        if ($(event.target).is($helpModal)) {
+            $helpModal.hide();
+        }
     });
 
     function submitSearch() {
@@ -70,7 +84,6 @@ $(document).ready(function () {
         if (matches.length > 0) {
             const item = matches[0].item;
             SearchModule.addTag(item);
-            VisualizationModule.highlightNodes([item.id]);
             $searchInput.val('');
             $suggestions.hide();
         }
@@ -87,7 +100,6 @@ $(document).ready(function () {
             const $item = $(`<div class="suggestion-item">${m.item.name} <small>(${m.item.type})</small></div>`);
             $item.on('click', () => {
                 SearchModule.addTag(m.item);
-                VisualizationModule.highlightNodes([m.item.id]);
                 $searchInput.val('');
                 $suggestions.hide();
             });
