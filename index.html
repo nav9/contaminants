@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,9 +10,11 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+
 <body>
     <div id="disclaimer-banner">
-        <span><strong>Disclaimer:</strong> This project is an amateur work and should be verified. Do not assume the information here is true. Consult a medical professional for medical advice.</span>
+        <span><strong>Disclaimer:</strong> This project is an amateur work and should be verified. Do not assume the
+            information here is true. Consult a medical professional for medical advice.</span>
         <button id="close-disclaimer"><i class="fas fa-times"></i></button>
     </div>
 
@@ -19,7 +22,9 @@
         <div id="overlay-ui">
             <div id="search-section">
                 <div id="search-bar-container">
-                    <input type="text" id="search-input" placeholder="Search contaminants, foods, diseases, symptoms, places...">
+                    <input type="text" id="search-input"
+                        placeholder="Search contaminants, foods, diseases, symptoms, places...">
+                    <button id="reset-search" title="Reset All Highlights"><i class="fas fa-undo"></i></button>
                     <button id="submit-search"><i class="fas fa-search"></i></button>
                     <div id="suggestions-dropdown"></div>
                 </div>
@@ -57,4 +62,5 @@
     <script src="js/visualization.js"></script>
     <script src="js/app.js"></script>
 </body>
+
 </html>

@@ -15,6 +15,8 @@
     --color-remedy: #69f0ae;
     --color-food: #40c4ff;
     --color-adulterant: #ffff00;
+    --color-residue: #8d6e63;
+    --color-allergen: #a1887f;
 }
 
 body,
@@ -103,6 +105,24 @@ html {
     border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
+}
+
+#reset-search {
+    background: #444;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#reset-search:hover {
+    background: #555;
+    color: var(--color-disease);
 }
 
 #suggestions-dropdown {
@@ -205,6 +225,16 @@ html {
 .tag-herbicide,
 .tag-poison {
     background-color: var(--color-poison);
+}
+
+.tag-residue {
+    background-color: var(--color-residue);
+    color: #fff;
+}
+
+.tag-allergen {
+    background-color: var(--color-allergen);
+    color: #fff;
 }
 
 #visual-display {
@@ -318,4 +348,15 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
+}
+
+/* Node Highlighting */
+.node.glowing-node circle {
+    stroke-width: 4px !important;
+    filter: drop-shadow(0 0 8px var(--glow-color));
+}
+
+.node.glowing-node text {
+    font-weight: bold;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
 }

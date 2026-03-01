@@ -130,10 +130,17 @@ const SearchModule = (function () {
         return (yiq >= 128) ? '#000' : '#fff';
     }
 
+    function clearAllTags() {
+        activeTags.clear();
+        $('#active-tags').empty();
+        $(document).trigger('tagsChanged', [[]]);
+    }
+
     return {
         search,
         addTag,
         removeTag,
+        clearAllTags,
         getActiveTags: () => Array.from(activeTags)
     };
 })();

@@ -70,10 +70,10 @@ const DATA = [
     {
         id: "aminoglycosides",
         name: "Aminoglycosides",
-        type: "medicine",
-        category: "green",
+        type: "residue",
+        category: "brown",
         aliases: ["Antibiotics"],
-        description: "A class of antibiotics used to treat severe infections.",
+        description: "A class of antibiotics used to treat severe infections, often found as residues in animal products.",
         effects: [
             "Hearing loss (ototoxicity)",
             "Gaze instability (oscillopsia)",
@@ -84,10 +84,10 @@ const DATA = [
     {
         id: "tetracyclines",
         name: "Tetracyclines",
-        type: "medicine",
-        category: "green",
+        type: "residue",
+        category: "brown",
         aliases: ["Antibiotic"],
-        description: "Broad-spectrum antibiotics.",
+        description: "Broad-spectrum antibiotics often found as residues in meat and dairy.",
         effects: [
             "Skin photosensitivity",
             "Fatty liver",
@@ -460,5 +460,173 @@ const DATA = [
         foundIn: ["Mouldy rice"],
         diseases: ["Cardiac Beriberi", "Sudden Cardiac Arrest"],
         citations: ["https://pubmed.ncbi.nlm.nih.gov/2443046/"]
+    },
+    {
+        id: "spinach",
+        name: "Spinach",
+        type: "food",
+        category: "light-blue",
+        description: "Leafy green vegetable, often contains pesticide residues.",
+        connected_to: ["organophosphates", "cadmium"]
+    },
+    {
+        id: "apple",
+        name: "Apple",
+        type: "food",
+        category: "light-blue",
+        description: "Common fruit, frequently found with pesticide residues (Dirty Dozen).",
+        connected_to: ["organophosphates", "chlorpyriphos"]
+    },
+    {
+        id: "red_lentils",
+        name: "Red Lentils",
+        type: "food",
+        category: "light-blue",
+        description: "Common pulse, may be polished with soapstone.",
+        connected_to: ["soapstone"]
+    },
+    {
+        id: "chickpeas",
+        name: "Chickpeas",
+        type: "food",
+        category: "light-blue",
+        description: "Popular legume, may contain lead or pesticide residues.",
+        connected_to: ["lead"]
+    },
+    {
+        id: "eggs",
+        name: "Eggs",
+        type: "food",
+        category: "light-blue",
+        description: "Animal product, may contain antibiotic residues or dioxins.",
+        connected_to: ["dioxins", "tetracyclines"]
+    },
+    {
+        id: "chicken",
+        name: "Chicken",
+        type: "food",
+        category: "light-blue",
+        description: "Common meat, may contain antibiotic residues and arsenic (arsenic-based drugs in feed).",
+        connected_to: ["arsenic", "tetracyclines", "aminoglycosides", "endotoxins"]
+    },
+    {
+        id: "milk",
+        name: "Milk",
+        type: "food",
+        category: "light-blue",
+        description: "Dairy product, may contain aflatoxins and antibiotic residues.",
+        connected_to: ["aflatoxins", "tetracyclines", "endotoxins"]
+    },
+    {
+        id: "cheese",
+        name: "Cheese",
+        type: "food",
+        category: "light-blue",
+        description: "Cultured dairy product, potential source of mycotoxins and residues.",
+        connected_to: ["aflatoxins", "endotoxins"]
+    },
+    {
+        id: "tuna",
+        name: "Tuna",
+        type: "food",
+        category: "light-blue",
+        description: "Large predatory fish, known for accumulating methylmercury.",
+        connected_to: ["mercury", "microplastics"]
+    },
+    {
+        id: "leukemia",
+        name: "Leukemia",
+        type: "disease",
+        category: "red",
+        description: "Cancer of the blood-forming tissues, linked to various environmental toxins.",
+        connected_to: ["dioxins", "pesticide_cocktail"]
+    },
+    {
+        id: "kidney_failure",
+        name: "Kidney Failure",
+        type: "disease",
+        category: "red",
+        description: "Loss of kidney function, often linked to heavy metal exposure.",
+        connected_to: ["cadmium", "chromium", "mercury"]
+    },
+    {
+        id: "neurological_disorder",
+        name: "Neurological Disorder",
+        type: "disease",
+        category: "red",
+        description: "Disorders of the nervous system.",
+        connected_to: ["mercury", "lead", "arsenic", "chlorpyriphos"]
+    },
+    {
+        id: "gi_disease",
+        name: "Gastrointestinal Disease",
+        type: "disease",
+        category: "red",
+        description: "Conditions involving the gastrointestinal tract.",
+        connected_to: ["soapstone", "arsenic", "formalin"]
+    },
+    {
+        id: "headache",
+        name: "Headache",
+        type: "symptom",
+        category: "orange",
+        description: "Pain in the head, common symptom for many toxicities.",
+        connected_to: ["neurological_disorder"]
+    },
+    {
+        id: "stomach_ache",
+        name: "Stomach Ache",
+        type: "symptom",
+        category: "orange",
+        description: "Abdominal pain, can be caused by adulterants or heavy metals.",
+        connected_to: ["gi_disease"]
+    },
+    {
+        id: "intestinal_pain",
+        name: "Intestinal pain",
+        type: "symptom",
+        category: "orange",
+        description: "Pain in the intestines.",
+        connected_to: ["gi_disease"]
+    },
+    {
+        id: "flat_feces",
+        name: "Flat feces",
+        type: "symptom",
+        category: "orange",
+        description: "Thin or ribbon-like stools, potentially indicative of GI issues.",
+        connected_to: ["gi_disease"]
+    },
+    {
+        id: "dark_feces",
+        name: "Dark feces",
+        type: "symptom",
+        category: "orange",
+        description: "Dark or black stools, can indicate internal bleeding.",
+        connected_to: ["gi_disease"]
+    },
+    {
+        id: "floating_feces",
+        name: "Floating feces",
+        type: "symptom",
+        category: "orange",
+        description: "Stools that float, often due to malabsorption or high fat content.",
+        connected_to: ["gi_disease"]
+    },
+    {
+        id: "sensitive_teeth",
+        name: "Sensitive teeth",
+        type: "symptom",
+        category: "orange",
+        description: "Pain or discomfort in teeth from stimuli like cold or heat.",
+        connected_to: ["heavy_metal_toxicity"]
+    },
+    {
+        id: "allergens",
+        name: "Allergens",
+        type: "allergen",
+        category: "brown",
+        description: "Substances that cause allergic reactions.",
+        connected_to: ["sodium_benzoate"]
     }
 ];

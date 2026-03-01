@@ -14,6 +14,7 @@ $(document).ready(function () {
     const $sidebarContent = $('#sidebar-content');
     const $disclaimer = $('#disclaimer-banner');
     const $closeDisclaimer = $('#close-disclaimer');
+    const $resetSearchBtn = $('#reset-search');
 
     // Remove minimized class by default
     $sidebar.removeClass('minimized');
@@ -50,11 +51,26 @@ $(document).ready(function () {
 
     $submitBtn.on('click', submitSearch);
 
+    $resetSearchBtn.on('click', function () {
+        // Clear all tags and highlights
+        SearchModule.clearAllTags();
+        VisualizationModule.clearHighlights();
+
+        // Clear search input
+        $searchInput.val('');
+        $suggestions.hide();
+
+        // Reset sidebar
+        $sidebarContent.html('<p class="placeholder-text">Click on a node in the graph to view details.</p>');
+    });
+
     function submitSearch() {
         const query = $searchInput.val();
         const matches = SearchModule.search(query);
         if (matches.length > 0) {
-            SearchModule.addTag(matches[0].item);
+            const item = matches[0].item;
+            SearchModule.addTag(item);
+            VisualizationModule.highlightNodes([item.id]);
             $searchInput.val('');
             $suggestions.hide();
         }
@@ -71,6 +87,7 @@ $(document).ready(function () {
             const $item = $(`<div class="suggestion-item">${m.item.name} <small>(${m.item.type})</small></div>`);
             $item.on('click', () => {
                 SearchModule.addTag(m.item);
+                VisualizationModule.highlightNodes([m.item.id]);
                 $searchInput.val('');
                 $suggestions.hide();
             });
@@ -82,7 +99,7 @@ $(document).ready(function () {
 
     // Global Event Listeners
     $(document).on('tagsChanged', function (e, activeTagIds) {
-        VisualizationModule.updateGraph(activeTagIds);
+        VisualizationModule.highlightNodes(activeTagIds);
 
         if (activeTagIds.length === 0) {
             $sidebarContent.html('<p class="placeholder-text">Click on a node in the graph to view details.</p>');

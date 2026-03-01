@@ -36,8 +36,10 @@ const VisualizationModule = (function () {
     function updateGraph(activeTagIds) {
         if (!svg) init();
 
-        const filteredData = getRelevantData(activeTagIds);
-        const { nodes, links } = generateGraphData(filteredData);
+        // Always show all nodes now, but keep filtering logic for initial/manual calls if needed
+        // The user specifically wants everything visible.
+        const allData = DATA;
+        const { nodes, links } = generateGraphData(allData);
 
         // Clear existing graph
         g.selectAll('*').remove();
@@ -50,14 +52,14 @@ const VisualizationModule = (function () {
             .force('center', d3.forceCenter(width / 2, height / 2))
             .force('collision', d3.forceCollide().radius(40))
             .force('x', d3.forceX().x(d => {
-                const categories = ['pesticide', 'poison', 'heavy-metal', 'adulterant', 'disease', 'symptom', 'medicine', 'remedy', 'food', 'place'];
+                const categories = ['pesticide', 'poison', 'heavy-metal', 'adulterant', 'disease', 'symptom', 'medicine', 'remedy', 'food', 'place', 'residue', 'allergen'];
                 const index = categories.indexOf(d.category);
-                return (index % 3) * (width / 3) + (width / 6);
+                return (index % 4) * (width / 4) + (width / 8);
             }).strength(0.1))
             .force('y', d3.forceY().y(d => {
-                const categories = ['pesticide', 'poison', 'heavy-metal', 'adulterant', 'disease', 'symptom', 'medicine', 'remedy', 'food', 'place'];
+                const categories = ['pesticide', 'poison', 'heavy-metal', 'adulterant', 'disease', 'symptom', 'medicine', 'remedy', 'food', 'place', 'residue', 'allergen'];
                 const index = categories.indexOf(d.category);
-                return Math.floor(index / 3) * (height / 4) + (height / 8);
+                return Math.floor(index / 4) * (height / 3) + (height / 6);
             }).strength(0.1));
 
         const link = g.append('g')
@@ -88,6 +90,8 @@ const VisualizationModule = (function () {
                 const purpleTypes = ['pesticide', 'fungicide', 'herbicide', 'poison'];
                 if (purpleTypes.includes(d.category)) return 'var(--color-poison)';
                 if (d.category === 'remedy') return 'var(--color-medicine)';
+                if (d.category === 'residue') return 'var(--color-residue)';
+                if (d.category === 'allergen') return 'var(--color-allergen)';
                 return `var(--color-${d.category})`;
             })
             .attr('stroke', '#fff')
@@ -111,6 +115,11 @@ const VisualizationModule = (function () {
             node
                 .attr('transform', d => `translate(${d.x},${d.y})`);
         });
+
+        // Apply highlights if any tags are already active
+        if (activeTagIds && activeTagIds.length > 0) {
+            highlightNodes(activeTagIds);
+        }
     }
 
     function getRelevantData(activeTagIds) {
@@ -216,7 +225,29 @@ const VisualizationModule = (function () {
         d.fy = null;
     }
 
+    function highlightNodes(ids) {
+        if (!ids || ids.length === 0) return;
+
+        g.selectAll('.node')
+            .classed('glowing-node', d => ids.includes(d.id))
+            .style('--glow-color', d => {
+                if (!ids.includes(d.id)) return null;
+                const purpleTypes = ['pesticide', 'fungicide', 'herbicide', 'poison'];
+                if (purpleTypes.includes(d.category)) return 'var(--color-poison)';
+                if (d.category === 'remedy') return 'var(--color-medicine)';
+                if (d.category === 'residue') return 'var(--color-residue)';
+                if (d.category === 'allergen') return 'var(--color-allergen)';
+                return `var(--color-${d.category})`;
+            });
+    }
+
+    function clearHighlights() {
+        g.selectAll('.node').classed('glowing-node', false);
+    }
+
     return {
-        updateGraph
+        updateGraph,
+        highlightNodes,
+        clearHighlights
     };
 })();
