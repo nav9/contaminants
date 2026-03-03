@@ -162,6 +162,39 @@ const VisualizationModule = (function () {
             .style('pointer-events', 'none')
             .style('text-shadow', '2px 2px 4px rgba(0,0,0,0.8)');
 
+        // Add long-press support for touch devices to open context menu (uses Hammer.js if available)
+        g.selectAll('.node').each(function(d) {
+            const el = this;
+            if (typeof Hammer !== 'undefined') {
+                try {
+                    const mc = new Hammer.Manager(el);
+                    if (!mc.get('press')) mc.add(new Hammer.Press({ time: 500 }));
+                    mc.on('press', function(ev) {
+                        const pageX = ev.center.x + window.scrollX;
+                        const pageY = ev.center.y + window.scrollY;
+                        showContextMenu(pageX, pageY, d);
+                    });
+                } catch (e) {
+                    // ignore Hammer setup errors
+                }
+            } else {
+                // Fallback: simple touch long-press
+                let pressTimer = null;
+                el.addEventListener('touchstart', function(e) {
+                    pressTimer = setTimeout(function() {
+                        const t = e.touches && e.touches[0];
+                        if (t) {
+                            const pageX = t.clientX + window.scrollX;
+                            const pageY = t.clientY + window.scrollY;
+                            showContextMenu(pageX, pageY, d);
+                        }
+                    }, 600);
+                }, { passive: true });
+                el.addEventListener('touchend', function() { clearTimeout(pressTimer); }, { passive: true });
+                el.addEventListener('touchmove', function() { clearTimeout(pressTimer); }, { passive: true });
+            }
+        });
+
         simulation.on('tick', () => {
             link
                 .attr('x1', d => d.source.x)
@@ -178,6 +211,7 @@ const VisualizationModule = (function () {
     }
 
     function getNodeColor(category) {
+        if (category === 'food') return '#32CD32'; // lime green for foods
         const purpleTypes = ['pesticide', 'fungicide', 'herbicide', 'poison'];
         let colorVar = `--color-${category}`;
         if (purpleTypes.includes(category)) colorVar = '--color-poison';
