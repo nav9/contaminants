@@ -6,9 +6,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Contaminants & Health Visualization</title>
     <link rel="stylesheet" href="css/styles.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <script id="jquery-local" src="lib/jquery.min.js"></script>
+        <script>
+            if (typeof jQuery === 'undefined') {
+                var s = document.createElement('script');
+                s.src = 'https://code.jquery.com/jquery-3.6.0.min.js';
+                s.onerror = function(){ console.warn('Failed to load jQuery from CDN'); };
+                document.head.appendChild(s);
+            }
+        </script>
+
+        <script id="d3-local" src="lib/d3.v7.min.js"></script>
+        <script>
+            if (typeof d3 === 'undefined') {
+                var s2 = document.createElement('script');
+                s2.src = 'https://d3js.org/d3.v7.min.js';
+                s2.onerror = function(){ console.warn('Failed to load d3 from CDN'); };
+                document.head.appendChild(s2);
+            }
+        </script>
+        <link id="fa-local" rel="stylesheet" href="lib/font-awesome/css/all.min.css">
+        <script>
+        (function(){
+            var localHref = 'lib/font-awesome/css/all.min.css';
+            var cdnHref = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css';
+
+            function loadCdn(){
+                if(document.getElementById('fa-cdn')) return;
+                var cdn = document.createElement('link');
+                cdn.id = 'fa-cdn';
+                cdn.rel = 'stylesheet';
+                cdn.href = cdnHref;
+                document.head.appendChild(cdn);
+            }
+
+            var link = document.getElementById('fa-local');
+            if(!link){
+                link = document.createElement('link');
+                link.id = 'fa-local';
+                link.rel = 'stylesheet';
+                link.href = localHref;
+                document.head.appendChild(link);
+            }
+
+            link.onerror = function(){
+                loadCdn();
+            };
+
+            function detection(){
+                try{
+                    var i = document.createElement('i');
+                    i.className = 'fas fa-check';
+                    i.style.position = 'absolute';
+                    i.style.left = '-9999px';
+                    document.body.appendChild(i);
+                    var content = window.getComputedStyle(i, '::before').getPropertyValue('content');
+                    document.body.removeChild(i);
+                    if(!content || content === 'none' || content === 'normal' || content === '""'){
+                        loadCdn();
+                    }
+                }catch(e){
+                    loadCdn();
+                }
+            }
+
+            if(document.readyState === 'loading'){
+                document.addEventListener('DOMContentLoaded', detection);
+            }else{
+                detection();
+            }
+        })();
+        </script>
 </head>
 
 <body>
