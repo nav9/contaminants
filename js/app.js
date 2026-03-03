@@ -163,6 +163,24 @@ $(document).ready(function () {
             `;
         }
 
+        if (data.detectionLocations && data.detectionLocations.length > 0) {
+            html += `
+                <div class="detail-section">
+                    <h4>Detected In (Study Locations)</h4>
+                    <ul>
+                        ${data.detectionLocations.map(loc => {
+                            const lines = [];
+                            if (loc.place) lines.push(`<strong>${loc.place}</strong>`);
+                            if (loc.sample) lines.push(`Sample: ${loc.sample}`);
+                            if (loc.year) lines.push(`Year: ${loc.year}`);
+                            if (loc.note) lines.push(loc.note);
+                            return `<li>${lines.join('<br>')}</li>`;
+                        }).join('')}
+                    </ul>
+                </div>
+            `;
+        }
+
         if (data.detection) {
             html += `
                 <div class="detail-section">
