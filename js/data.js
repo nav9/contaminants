@@ -2276,7 +2276,8 @@ const DATA_PART_2 = [
         id: "burning_sensation",
         name: "Burning Sensation",
         type: "symptom",
-        description: "Paresthesia-like burning sensation can occur in pyrethroid toxicity."
+        description: "Paresthesia-like burning sensation can occur in pyrethroid toxicity.",
+        connected_to: ["pyrethroids"]
     },
     {
         id: "muscle_twitching",
@@ -2337,6 +2338,57 @@ const DATA_PART_2 = [
         type: "remedy",
         description: "Improved icing, cold-chain and hygiene reduce preservative misuse and microbial contamination in seafood.",
         connected_to: ["formaldehyde", "ammonia_ice_adulteration", "salmonella", "campylobacter", "parasitic_worms"]
+    },
+
+    {
+        id: "aflatoxin_b1",
+        name: "Aflatoxin B1",
+        type: "contaminant",
+        description: "Potent hepatocarcinogen produced by Aspergillus fungi, commonly contaminating grains under poor storage.",
+        diseases: ["Liver Cancer", "Cancer"],
+        citations: ["https://pubmed.ncbi.nlm.nih.gov/38144849/"]
+    },
+    {
+        id: "ragi",
+        name: "Ragi (Finger Millet)",
+        type: "food",
+        description: "Nutritious millet; susceptible to aflatoxin and pesticide residues depending on storage.",
+        connected_to: ["aflatoxin_b1", "lead", "cadmium", "pyrethroids"]
+    },
+    {
+        id: "browntop_millet",
+        name: "Browntop Millet",
+        type: "food",
+        description: "Small millet grain; can be contaminated with field mycotoxins.",
+        connected_to: ["aflatoxin_b1"]
+    },
+    {
+        id: "barnyard_millet",
+        name: "Barnyard Millet",
+        type: "food",
+        description: "Fast-growing millet; monitored for aflatoxin contamination.",
+        connected_to: ["aflatoxin_b1"]
+    },
+    {
+        id: "quinoa",
+        name: "Quinoa",
+        type: "food",
+        description: "Pseudocereal; can absorb soil heavy metals and host storage fungi.",
+        connected_to: ["aflatoxin_b1", "lead", "cadmium"]
+    },
+    {
+        id: "pearl_millet",
+        name: "Pearl Millet (Bajra)",
+        type: "food",
+        description: "Widely grown millet; susceptible to ergot and aflatoxin contamination.",
+        connected_to: ["aflatoxin_b1"]
+    },
+    {
+        id: "sorghum",
+        name: "Sorghum (Jowar)",
+        type: "food",
+        description: "Staple cereal; risk of aflatoxin and dhurrin-derived cyanide toxicity if improperly harvested.",
+        connected_to: ["aflatoxin_b1"]
     }
 ];
 

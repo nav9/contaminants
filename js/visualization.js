@@ -194,8 +194,8 @@ const VisualizationModule = (function () {
                 const t = (typeof l.target === 'object') ? l.target.id : l.target;
                 return s === clickedId || t === clickedId;
             })
-            .attr('stroke', function(l) { return d3.select(this).classed('glowing-link') ? getNodeColor(clickedData.category) : '#555'; })
-            .attr('stroke-width', function(l) { return d3.select(this).classed('glowing-link') ? 4 : 2; });
+                .attr('stroke', function (l) { return d3.select(this).classed('glowing-link') ? '#fff' : '#555'; })
+                .attr('stroke-width', function (l) { return d3.select(this).classed('glowing-link') ? 4 : 2; });
 
             // Notify other modules about glow state
             const hasGlow = connectedIds.size > 0;
@@ -203,13 +203,13 @@ const VisualizationModule = (function () {
         }
 
         // Add long-press support for touch devices to open context menu (uses Hammer.js if available)
-        g.selectAll('.node').each(function(d) {
+        g.selectAll('.node').each(function (d) {
             const el = this;
             if (typeof Hammer !== 'undefined') {
                 try {
                     const mc = new Hammer.Manager(el);
                     if (!mc.get('press')) mc.add(new Hammer.Press({ time: 500 }));
-                    mc.on('press', function(ev) {
+                    mc.on('press', function (ev) {
                         const pageX = ev.center.x + window.scrollX;
                         const pageY = ev.center.y + window.scrollY;
                         showContextMenu(pageX, pageY, d);
@@ -220,8 +220,8 @@ const VisualizationModule = (function () {
             } else {
                 // Fallback: simple touch long-press
                 let pressTimer = null;
-                el.addEventListener('touchstart', function(e) {
-                    pressTimer = setTimeout(function() {
+                el.addEventListener('touchstart', function (e) {
+                    pressTimer = setTimeout(function () {
                         const t = e.touches && e.touches[0];
                         if (t) {
                             const pageX = t.clientX + window.scrollX;
@@ -230,8 +230,8 @@ const VisualizationModule = (function () {
                         }
                     }, 600);
                 }, { passive: true });
-                el.addEventListener('touchend', function() { clearTimeout(pressTimer); }, { passive: true });
-                el.addEventListener('touchmove', function() { clearTimeout(pressTimer); }, { passive: true });
+                el.addEventListener('touchend', function () { clearTimeout(pressTimer); }, { passive: true });
+                el.addEventListener('touchmove', function () { clearTimeout(pressTimer); }, { passive: true });
             }
         });
 
@@ -393,8 +393,8 @@ const VisualizationModule = (function () {
                 const t = (typeof l.target === 'object') ? l.target.id : l.target;
                 return (origSet.has(s) && neighborSet.has(t)) || (origSet.has(t) && neighborSet.has(s));
             })
-            .attr('stroke', function(l) { return d3.select(this).classed('glowing-link') ? '#fff' : '#555'; })
-            .attr('stroke-width', function(l) { return d3.select(this).classed('glowing-link') ? 4 : 2; });
+            .attr('stroke', function (l) { return d3.select(this).classed('glowing-link') ? '#fff' : '#555'; })
+            .attr('stroke-width', function (l) { return d3.select(this).classed('glowing-link') ? 4 : 2; });
 
         const hasGlow = finalArray.length > 0;
         $(document).trigger('glowChanged', [hasGlow]);
