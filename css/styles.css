@@ -145,7 +145,7 @@ html {
     background: var(--accent-color);
     border: none;
     color: black;
-    padding: 8px 15px;
+    padding: 8px 12px;
     border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
@@ -166,8 +166,8 @@ html {
 
 /* Make help button slightly wider */
 #help-btn {
-    padding-left: 14px;
-    padding-right: 14px;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 
 #reset-search:hover {
