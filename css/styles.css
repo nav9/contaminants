@@ -11,8 +11,8 @@
     --color-poison: #b388ff;
     --color-heavy-metal: #3f51b5;
     --color-place: #bdbdbd;
-    --color-medicine: #69f0ae;
-    --color-remedy: #69f0ae;
+    --color-contaminant: #6a1b9a;
+    --color-remedy: #006400;
     --color-food: #40c4ff;
     --color-adulterant: #ffff00;
     --color-allergen: #6a1b9a;
@@ -124,6 +124,12 @@ html {
     justify-content: center;
 }
 
+/* Make help button slightly wider */
+#help-btn {
+    padding-left: 14px;
+    padding-right: 14px;
+}
+
 #reset-search:hover {
     background: #555;
     color: var(--color-disease);
@@ -218,6 +224,11 @@ html {
 
 .tag-remedy {
     background-color: var(--color-remedy);
+}
+
+.tag-contaminant {
+    background-color: var(--color-contaminant);
+    color: #fff;
 }
 
 .tag-food {

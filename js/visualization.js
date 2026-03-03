@@ -254,7 +254,7 @@ const VisualizationModule = (function () {
         const purpleTypes = ['pesticide', 'fungicide', 'herbicide', 'poison'];
         let colorVar = `--color-${category}`;
         if (purpleTypes.includes(category)) colorVar = '--color-poison';
-        if (category === 'remedy') colorVar = '--color-medicine';
+        if (category === 'remedy') colorVar = '--color-remedy';
         if (category === 'residue') colorVar = '--color-residue';
         if (category === 'allergen') colorVar = '--color-allergen';
 
