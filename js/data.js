@@ -215,7 +215,7 @@ const DATA_PART_1 = [
     {
         id: "aflatoxin_m1",
         name: "Aflatoxin M1",
-        type: "poison",
+        type: "contaminant",
         aliases: ["AFM1"],
         description: "Milk-borne mycotoxin formed in lactating animals after feed contamination with aflatoxin B1.",
         effects: [
@@ -482,7 +482,7 @@ const DATA_PART_1 = [
     {
         id: "dioxins_furans",
         name: "Dioxins and Furans",
-        type: "poison",
+        type: "contaminant",
         aliases: ["PCDD/Fs"],
         description: "Persistent organic pollutants that bioaccumulate in fat-rich animal foods.",
         effects: [
@@ -514,7 +514,7 @@ const DATA_PART_1 = [
     {
         id: "microplastics",
         name: "Microplastics",
-        type: "poison",
+        type: "contaminant",
         description: "Small plastic particles detected in edible tissues of marine fish in multiple Indian coastal studies.",
         effects: [
             "Potential gut inflammation",
@@ -601,7 +601,7 @@ const DATA_PART_1 = [
     {
         id: "acrylamide",
         name: "Acrylamide",
-        type: "poison",
+        type: "contaminant",
         description: "Process contaminant formed in high-temperature cooking of carbohydrate-rich foods.",
         effects: [
             "Probable carcinogenic concern",
@@ -661,7 +661,7 @@ const DATA_PART_1 = [
     {
         id: "salmonella",
         name: "Salmonella Contamination",
-        type: "poison",
+        type: "contaminant",
         description: "Foodborne bacterial contamination in eggs and poultry chains.",
         effects: [
             "Fever",
@@ -685,7 +685,7 @@ const DATA_PART_1 = [
     {
         id: "campylobacter",
         name: "Campylobacter Contamination",
-        type: "poison",
+        type: "contaminant",
         description: "Poultry-associated pathogen with documented drug resistance in retail chains.",
         effects: [
             "Gastroenteritis",
@@ -914,8 +914,8 @@ const DATA_PART_1 = [
         connected_to: ["dioxins_furans"]
     },
     {
-        id: "beef",
-        name: "Beef",
+        id: "buffalo",
+        name: "Buffalo",
         type: "food",
         description: "Ruminant meat in contaminant surveillance datasets outside India and in mixed studies.",
         connected_to: ["dioxins_furans", "fluoroquinolones"]

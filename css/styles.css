@@ -129,6 +129,11 @@ html {
     color: var(--color-disease);
 }
 
+#reset-search:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
 #suggestions-dropdown {
     position: absolute;
     top: 100%;
@@ -385,6 +390,14 @@ html {
 .node.glowing-node text {
     font-weight: bold;
     text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Glowing link style */
+.links line.glowing-link {
+    stroke: #fff;
+    stroke-width: 4px;
+    stroke-opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(255,255,255,0.6));
 }
 
 /* Context Menu */

@@ -14,6 +14,8 @@ $(document).ready(function () {
     const $disclaimer = $('#disclaimer-banner');
     const $closeDisclaimer = $('#close-disclaimer');
     const $resetSearchBtn = $('#reset-search');
+    // Reset button disabled until there is a glow to reset
+    $resetSearchBtn.prop('disabled', true);
     const $helpBtn = $('#help-btn');
     const $helpModal = $('#help-modal');
     const $closeModal = $('.close-modal');
@@ -120,6 +122,11 @@ $(document).ready(function () {
 
     $(document).on('nodeClicked', function (e, data) {
         showDetails(data);
+    });
+
+    // Enable/disable reset button when glow state changes
+    $(document).on('glowChanged', function(e, hasGlow) {
+        $resetSearchBtn.prop('disabled', !hasGlow);
     });
 
     function showDetails(data) {

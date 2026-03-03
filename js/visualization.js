@@ -1,6 +1,8 @@
 const VisualizationModule = (function () {
     let width, height;
     let svg, g, simulation;
+    let currentNodes = [];
+    let currentLinks = [];
     let zoom;
     let contextMenuNode = null;
 
@@ -72,21 +74,25 @@ const VisualizationModule = (function () {
 
         if (nodes.length === 0) return;
 
-        // Force Simulation with Categorical Layout
+        // store current graph data for other functions
+        currentNodes = nodes;
+        currentLinks = links;
+
+        // Force Simulation with Categorical Layout (collision disabled)
         simulation = d3.forceSimulation(nodes)
             .force('link', d3.forceLink(links).id(d => d.id).distance(d => {
-                // Closer if one side is unconnected or just general preference
-                const isSourceConnected = links.some(l => l.source.id === d.source.id || l.target.id === d.source.id);
-                const isTargetConnected = links.some(l => l.source.id === d.target.id || l.target.id === d.target.id);
-                return (isSourceConnected && isTargetConnected) ? 80 : 40;
+                // Larger distances to reduce overlap
+                const isSourceConnected = links.some(l => (typeof l.source === 'object' ? l.source.id : l.source) === (d.source && d.source.id ? d.source.id : d.id) || (typeof l.target === 'object' ? l.target.id : l.target) === (d.source && d.source.id ? d.source.id : d.id));
+                const isTargetConnected = links.some(l => (typeof l.source === 'object' ? l.source.id : l.source) === (d.target && d.target.id ? d.target.id : d.id) || (typeof l.target === 'object' ? l.target.id : l.target) === (d.target && d.target.id ? d.target.id : d.id));
+                return (isSourceConnected && isTargetConnected) ? 140 : 80;
             }))
             .force('charge', d3.forceManyBody().strength(d => {
-                // Unconnected nodes should be pulled closer
-                const hasLinks = links.some(l => l.source === d.id || l.target === d.id || l.source.id === d.id || l.target.id === d.id);
-                return hasLinks ? -300 : -50;
+                // Increase repulsion for more spacing
+                const hasLinks = links.some(l => (typeof l.source === 'object' ? l.source.id : l.source) === d.id || (typeof l.target === 'object' ? l.target.id : l.target) === d.id);
+                return hasLinks ? -800 : -200;
             }))
             .force('center', d3.forceCenter(width / 2, height / 2))
-            .force('collision', d3.forceCollide().radius(50))
+            // collision force intentionally removed so dragged nodes won't collide
             .force('categorical', (alpha) => {
                 const categories = {
                     'disease': { angle: null, radius: 0 },
@@ -110,7 +116,7 @@ const VisualizationModule = (function () {
 
                     if (cat.angle !== null) {
                         const rad = (cat.angle * Math.PI) / 180;
-                        const dist = 300 * cat.radius;
+                        const dist = 450 * cat.radius;
                         targetX += Math.cos(rad) * dist;
                         targetY += Math.sin(rad) * dist;
                     }
@@ -140,6 +146,8 @@ const VisualizationModule = (function () {
                 .on('drag', dragged)
                 .on('end', dragended))
             .on('click', (event, d) => {
+                event.stopPropagation();
+                handleNodeClick(event, d);
                 $(document).trigger('nodeClicked', [d.originalData]);
             })
             .on('contextmenu', (event, d) => {
@@ -161,6 +169,37 @@ const VisualizationModule = (function () {
             .attr('font-size', '13px')
             .style('pointer-events', 'none')
             .style('text-shadow', '2px 2px 4px rgba(0,0,0,0.8)');
+
+        // function to highlight clicked node, directly connected nodes, and connecting links
+        function handleNodeClick(event, clickedData) {
+            const clickedId = clickedData.id;
+            const connectedIds = new Set([clickedId]);
+
+            links.forEach(l => {
+                const s = (typeof l.source === 'object') ? l.source.id : l.source;
+                const t = (typeof l.target === 'object') ? l.target.id : l.target;
+                if (s === clickedId) connectedIds.add(t);
+                if (t === clickedId) connectedIds.add(s);
+            });
+
+            // Glow nodes: clicked + directly connected
+            g.selectAll('.node')
+                .classed('glowing-node', d => connectedIds.has(d.id))
+                .style('--glow-color', d => connectedIds.has(d.id) ? getNodeColor(d.category) : null);
+
+            // Glow links that connect the clicked node to directly connected nodes
+            link.classed('glowing-link', l => {
+                const s = (typeof l.source === 'object') ? l.source.id : l.source;
+                const t = (typeof l.target === 'object') ? l.target.id : l.target;
+                return s === clickedId || t === clickedId;
+            })
+            .attr('stroke', function(l) { return d3.select(this).classed('glowing-link') ? getNodeColor(clickedData.category) : '#555'; })
+            .attr('stroke-width', function(l) { return d3.select(this).classed('glowing-link') ? 4 : 2; });
+
+            // Notify other modules about glow state
+            const hasGlow = connectedIds.size > 0;
+            $(document).trigger('glowChanged', [hasGlow]);
+        }
 
         // Add long-press support for touch devices to open context menu (uses Hammer.js if available)
         g.selectAll('.node').each(function(d) {
@@ -326,20 +365,48 @@ const VisualizationModule = (function () {
     }
 
     function highlightNodes(ids = []) {
-        g.selectAll('.node')
-            .classed('glowing-node', d => ids.includes(d.id))
-            .style('--glow-color', d => {
-                if (!ids.includes(d.id)) return null;
-                return getNodeColor(d.category);
-            });
+        // Only include the searched node(s) and their immediate neighbors
+        const origSet = new Set(ids);
+        const neighborSet = new Set();
 
-        if (ids.length > 0) {
-            zoomToNodes(ids);
+        if (currentLinks && currentLinks.length > 0 && origSet.size > 0) {
+            currentLinks.forEach(l => {
+                const s = (typeof l.source === 'object') ? l.source.id : l.source;
+                const t = (typeof l.target === 'object') ? l.target.id : l.target;
+                if (origSet.has(s) && !origSet.has(t)) neighborSet.add(t);
+                if (origSet.has(t) && !origSet.has(s)) neighborSet.add(s);
+            });
+        }
+
+        const finalSet = new Set([...origSet, ...neighborSet]);
+        const finalArray = Array.from(finalSet);
+
+        g.selectAll('.node')
+            .classed('glowing-node', d => finalSet.has(d.id))
+            .style('--glow-color', d => finalSet.has(d.id) ? getNodeColor(d.category) : null);
+
+        // Highlight only the links that directly connect a searched node to its neighbor
+        g.selectAll('.links line')
+            .classed('glowing-link', l => {
+                const s = (typeof l.source === 'object') ? l.source.id : l.source;
+                const t = (typeof l.target === 'object') ? l.target.id : l.target;
+                return (origSet.has(s) && neighborSet.has(t)) || (origSet.has(t) && neighborSet.has(s));
+            })
+            .attr('stroke', function(l) { return d3.select(this).classed('glowing-link') ? '#fff' : '#555'; })
+            .attr('stroke-width', function(l) { return d3.select(this).classed('glowing-link') ? 4 : 2; });
+
+        const hasGlow = finalArray.length > 0;
+        $(document).trigger('glowChanged', [hasGlow]);
+
+        if (finalArray.length > 0) {
+            zoomToNodes(finalArray);
         }
     }
 
     function clearHighlights() {
         g.selectAll('.node').classed('glowing-node', false);
+        g.selectAll('.links line').classed('glowing-link', false).attr('stroke', '#555').attr('stroke-width', 2);
+        $(document).trigger('glowChanged', [false]);
     }
 
     function zoomToFit() {
