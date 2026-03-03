@@ -5,7 +5,7 @@ A simple project I made for my quick reference of contaminants and the use of `d
 On GitHub Pages [here](https://nav9.github.io/contaminants/).
 
 # Screenshot
-
+![Alt text](gallery/contaminantsScreenshot.png?raw=true "Sample screenshot of contaminants")  
   
 # Acknowledgement of the various LLM-based agentic tools used for vibe-coding
 * Antigravity (and some LLM's the application uses).
