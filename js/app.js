@@ -8,6 +8,8 @@ $(document).ready(function () {
     const $submitBtn = $('#submit-search');
     const $suggestions = $('#suggestions-dropdown');
     const $showSuggestions = $('#show-suggestions');
+    const $searchSection = $('#search-section');
+    const $toggleSearchSection = $('#toggle-search-section');
     const $sidebar = $('#details-sidebar');
     const $toggleSidebar = $('#toggle-sidebar');
     const $sidebarContent = $('#sidebar-content');
@@ -21,6 +23,8 @@ $(document).ready(function () {
     const $closeModal = $('.close-modal');
 
     // Remove minimized class by default
+    $searchSection.removeClass('minimized');
+    $toggleSearchSection.html('<i class="fas fa-chevron-left"></i>');
     $sidebar.removeClass('minimized');
     $toggleSidebar.html('<i class="fas fa-chevron-right"></i>');
 
@@ -33,6 +37,22 @@ $(document).ready(function () {
         const isMinimized = $sidebar.hasClass('minimized');
         const icon = isMinimized ? 'fa-chevron-left' : 'fa-chevron-right';
         $toggleSidebar.html(`<i class="fas ${icon}"></i>`);
+    });
+
+    // Search panel collapse/expand logic
+    $toggleSearchSection.on('click', () => {
+        $searchSection.toggleClass('minimized');
+        const isMinimized = $searchSection.hasClass('minimized');
+        const icon = isMinimized ? 'fa-chevron-right' : 'fa-chevron-left';
+        const title = isMinimized ? 'Expand search panel' : 'Collapse search panel';
+
+        $toggleSearchSection.html(`<i class="fas ${icon}"></i>`);
+        $toggleSearchSection.attr('title', title);
+        $toggleSearchSection.attr('aria-label', title);
+
+        if (isMinimized) {
+            $suggestions.hide();
+        }
     });
 
     // Search input handlers

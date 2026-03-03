@@ -88,20 +88,24 @@
     <div id="app-container">
         <div id="overlay-ui">
             <div id="search-section">
-                <div id="search-bar-container">
-                    <input type="text" id="search-input"
-                        placeholder="Search contaminants, foods, diseases, symptoms...">
-                    <button id="submit-search"><i class="fas fa-search"></i></button>
-                    <button id="reset-search" title="Reset All Highlights"><i class="fas fa-lightbulb"></i></button>
-                    <button id="help-btn" title="How to use"><i class="fas fa-question-circle"></i></button>
-                    <div id="suggestions-dropdown"></div>
+                <button id="toggle-search-section" title="Collapse search panel" aria-label="Collapse search panel">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div id="search-content">
+                    <div id="search-bar-container">
+                        <input type="text" id="search-input" placeholder="Search contaminants, foods, diseases, symptoms...">
+                        <button id="submit-search"><i class="fas fa-search"></i></button>
+                        <button id="reset-search" title="Reset All Highlights"><i class="fas fa-lightbulb"></i></button>
+                        <button id="help-btn" title="How to use"><i class="fas fa-question-circle"></i></button>
+                        <div id="suggestions-dropdown"></div>
+                    </div>
+                    <div id="search-options">
+                        <label>
+                            <input type="checkbox" id="show-suggestions" checked> Show suggestions
+                        </label>
+                    </div>
+                    <div id="active-tags"></div>
                 </div>
-                <div id="search-options">
-                    <label>
-                        <input type="checkbox" id="show-suggestions" checked> Show suggestions
-                    </label>
-                </div>
-                <div id="active-tags"></div>
             </div>
         </div>
 
@@ -164,6 +168,7 @@
                 <section>
                     <h3><i class="fas fa-search"></i> Search & Tags</h3>
                     <ul>
+                        <li>Use the chevron on the search box to collapse/expand the panel to the left.</li>
                         <li>Search for contaminants, foods, or diseases to highlight them.</li>
                         <li>The <i class="fas fa-lightbulb"></i> (Bulb Icon) clears all active highlights and tags.</li>
                     </ul>

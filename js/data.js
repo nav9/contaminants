@@ -6,11 +6,20 @@ const DATA_PART_1 = [
         aliases: ["OP pesticides"],
         description: "Broad insecticide class frequently reported in fruit and vegetable residue monitoring programs.",
         effects: [
-            "Neurotoxicity",
-            "Cholinesterase inhibition",
-            "Developmental concerns with chronic exposure"
+            "Can disrupt thymus function and immune regulation",
+            "Cholinesterase inhibition with autonomic nervous system effects",
+            "Arrhythmia and sudden-cardiac-event risk in severe exposure",
+            "Can alter lipid metabolism and raise fibrinogen",
+            "Pro-thrombotic tendency and plaque instability",
+            "Developmental neurotoxicity concern with chronic exposure"
         ],
-        diseases: ["Neurological Disorders"],
+        diseases: [
+            "Neurological Disorders",
+            "Autoimmune Disorders",
+            "Arrhythmia",
+            "Atherosclerosis",
+            "Myocardial Infarction"
+        ],
         foundIn: [
             "Apple",
             "Grape",
@@ -48,7 +57,9 @@ const DATA_PART_1 = [
         citations: [
             "https://pubmed.ncbi.nlm.nih.gov/38144849/",
             "https://pubmed.ncbi.nlm.nih.gov/35385990/",
-            "https://pubmed.ncbi.nlm.nih.gov/20632088/"
+            "https://pubmed.ncbi.nlm.nih.gov/20632088/",
+            "https://pubmed.ncbi.nlm.nih.gov/32816635/",
+            "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4235219/"
         ]
     },
     {
@@ -60,9 +71,18 @@ const DATA_PART_1 = [
         effects: [
             "Bioaccumulation in fat-rich foods",
             "Endocrine disruption",
+            "Immune dysregulation risk",
+            "Association with atherosclerotic progression",
+            "Association with non-fatal myocardial infarction",
             "Long-term cancer concern"
         ],
-        diseases: ["Cancer", "Endocrine and Reproductive Effects"],
+        diseases: [
+            "Cancer",
+            "Endocrine and Reproductive Effects",
+            "Autoimmune Disorders",
+            "Atherosclerosis",
+            "Myocardial Infarction"
+        ],
         foundIn: [
             "Rice",
             "Wheat Flour",
@@ -102,7 +122,8 @@ const DATA_PART_1 = [
         ],
         citations: [
             "https://pubmed.ncbi.nlm.nih.gov/1698760/",
-            "https://pubmed.ncbi.nlm.nih.gov/32415153/"
+            "https://pubmed.ncbi.nlm.nih.gov/32415153/",
+            "https://pubmed.ncbi.nlm.nih.gov/11264628/"
         ]
     },
     {
@@ -112,9 +133,10 @@ const DATA_PART_1 = [
         description: "Organophosphate insecticide frequently reported in produce and milk pesticide panels.",
         effects: [
             "Neurodevelopmental concern",
-            "Acetylcholinesterase inhibition"
+            "Acetylcholinesterase inhibition",
+            "Association with malignant brain tumors in high-exposure agricultural cohorts"
         ],
-        diseases: ["Neurological Disorders"],
+        diseases: ["Neurological Disorders", "Brain Tumors", "Glioblastoma Multiforme", "Astrocytoma", "Medulloblastoma"],
         foundIn: [
             "Apple",
             "Milk",
@@ -139,7 +161,8 @@ const DATA_PART_1 = [
         ],
         citations: [
             "https://pubmed.ncbi.nlm.nih.gov/38110624/",
-            "https://pubmed.ncbi.nlm.nih.gov/32415153/"
+            "https://pubmed.ncbi.nlm.nih.gov/32415153/",
+            "https://pubmed.ncbi.nlm.nih.gov/39292407/"
         ]
     },
     {
@@ -149,9 +172,10 @@ const DATA_PART_1 = [
         description: "Dithiocarbamate fungicide used in fruit and vegetable protection.",
         effects: [
             "Thyroid-related concern",
-            "Potential endocrine effects"
+            "Potential endocrine effects",
+            "Association with malignant brain tumor burden in high-exposure cohorts"
         ],
-        diseases: ["Endocrine and Reproductive Effects"],
+        diseases: ["Endocrine and Reproductive Effects", "Brain Tumors", "Astrocytoma", "Anaplastic Oligodendroglioma"],
         foundIn: ["Apple"],
         detectionLocations: [
             {
@@ -162,7 +186,8 @@ const DATA_PART_1 = [
             }
         ],
         citations: [
-            "https://pubmed.ncbi.nlm.nih.gov/38110624/"
+            "https://pubmed.ncbi.nlm.nih.gov/38110624/",
+            "https://pubmed.ncbi.nlm.nih.gov/39292407/"
         ]
     },
     {
@@ -219,10 +244,12 @@ const DATA_PART_1 = [
         aliases: ["AFM1"],
         description: "Milk-borne mycotoxin formed in lactating animals after feed contamination with aflatoxin B1.",
         effects: [
+            "Immune suppression risk",
             "Hepatotoxicity",
-            "Carcinogenic risk"
+            "Liver carcinogenic risk",
+            "Vascular and cardiac toxicity has been reported in severe exposure literature"
         ],
-        diseases: ["Liver Cancer", "Cancer"],
+        diseases: ["Liver Cancer", "Cancer", "Heart Failure"],
         foundIn: ["Milk", "Curd (Yogurt)", "Paneer", "Cheese"],
         detectionLocations: [
             {
@@ -240,7 +267,8 @@ const DATA_PART_1 = [
         ],
         citations: [
             "https://pubmed.ncbi.nlm.nih.gov/35602443/",
-            "https://pubmed.ncbi.nlm.nih.gov/31766982/"
+            "https://pubmed.ncbi.nlm.nih.gov/31766982/",
+            "https://pubmed.ncbi.nlm.nih.gov/30846090/"
         ]
     },
     {
@@ -252,7 +280,10 @@ const DATA_PART_1 = [
         effects: [
             "Carcinogenicity",
             "Cardiovascular toxicity",
-            "Neurological effects"
+            "Carotid thickening and peripheral vascular disease associations",
+            "Neurological effects",
+            "Skin and hair changes",
+            "Gastrointestinal and liver toxicity"
         ],
         diseases: ["Cancer", "Cardiovascular Disease", "Neurological Disorders"],
         foundIn: ["Rice", "Wheat Flour", "Potato", "Spinach", "Papaya", "Milk", "Fish"],
@@ -287,8 +318,10 @@ const DATA_PART_1 = [
         description: "Neurotoxic heavy metal detected in vegetables, dairy and some animal-source foods.",
         effects: [
             "Neurotoxicity",
+            "Can impair nitric-oxide-mediated vascular relaxation",
             "Hematological toxicity",
-            "Developmental toxicity"
+            "Anemia and developmental toxicity",
+            "Can destabilize atherosclerotic plaques"
         ],
         diseases: ["Neurological Disorders", "Kidney Disease", "Cardiovascular Disease"],
         foundIn: [
@@ -328,8 +361,10 @@ const DATA_PART_1 = [
         description: "Bioaccumulative heavy metal linked to renal and bone toxicity.",
         effects: [
             "Kidney injury",
+            "Liver injury",
             "Bone demineralization",
-            "Oxidative stress"
+            "Oxidative stress",
+            "Atherosclerotic plaque instability"
         ],
         diseases: ["Kidney Disease", "Cancer"],
         foundIn: ["Spinach", "Potato", "Cabbage", "Milk", "Fish", "Shrimp"],
@@ -361,6 +396,9 @@ const DATA_PART_1 = [
         effects: [
             "Neurotoxicity",
             "Renal toxicity",
+            "Gastrointestinal injury risk",
+            "Pro-thrombotic effects",
+            "Can disrupt vascular protective enzyme systems",
             "Fetal developmental risk"
         ],
         diseases: ["Neurological Disorders", "Kidney Disease"],
@@ -391,8 +429,9 @@ const DATA_PART_1 = [
         aliases: ["Cr"],
         description: "Trace metal; hexavalent forms are highly toxic and monitored in fish and produce risk studies.",
         effects: [
-            "Renal stress",
-            "Gastrointestinal irritation",
+            "Kidney dysfunction",
+            "Gastrointestinal disorders",
+            "Skin disease risk",
             "Carcinogenic concern for Cr(VI)"
         ],
         diseases: ["Kidney Disease", "Cancer"],
@@ -423,11 +462,14 @@ const DATA_PART_1 = [
         aliases: ["Oxytetracycline", "Chlortetracycline"],
         description: "Veterinary antibiotic residues detected in eggs and milk when withdrawal periods are not respected.",
         effects: [
-            "Gut microbiome disturbance",
-            "Allergic reactions",
+            "Skin photosensitivity",
+            "Fatty liver injury risk with prolonged exposure",
+            "Tinnitus and vestibular adverse effects",
+            "Abdominal pain and breathing-related adverse reactions",
+            "Drug-induced lupus has been reported with some tetracycline-class drugs",
             "Antimicrobial resistance pressure"
         ],
-        diseases: ["Antimicrobial Resistance"],
+        diseases: ["Antimicrobial Resistance", "Drug-Induced Lupus"],
         foundIn: ["Eggs", "Milk", "Chicken Meat"],
         detectionLocations: [
             {
@@ -445,7 +487,9 @@ const DATA_PART_1 = [
         ],
         citations: [
             "https://pubmed.ncbi.nlm.nih.gov/39778680/",
-            "https://pubmed.ncbi.nlm.nih.gov/32801555/"
+            "https://pubmed.ncbi.nlm.nih.gov/32801555/",
+            "https://www.ncbi.nlm.nih.gov/books/NBK549905/",
+            "https://www.ncbi.nlm.nih.gov/books/NBK547733/"
         ]
     },
     {
@@ -488,6 +532,9 @@ const DATA_PART_1 = [
         effects: [
             "Immune dysfunction",
             "Endocrine disruption",
+            "Skin lesions (chloracne)",
+            "Patchy skin darkening",
+            "Reproductive issues",
             "Carcinogenicity"
         ],
         diseases: ["Cancer", "Immune Dysfunction", "Endocrine and Reproductive Effects"],
@@ -1178,5 +1225,1120 @@ const DATA_PART_1 = [
     }
 ];
 
-// Part 1 dataset. Next prompts can append additional nodes to this array.
-const DATA = DATA_PART_1;
+const DATA_PART_2 = [
+    {
+        id: "aminoglycosides",
+        name: "Aminoglycoside Residues",
+        type: "residue",
+        aliases: ["Gentamicin", "Neomycin", "Streptomycin"],
+        description: "Antibiotic residues relevant to poultry and dairy chains when withdrawal controls fail.",
+        effects: [
+            "Hearing loss (ototoxicity)",
+            "Gaze instability (oscillopsia)",
+            "Balance impairment"
+        ],
+        diseases: ["Neurological Disorders"],
+        foundIn: ["Eggs", "Chicken Meat", "Milk"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/24584483/"
+        ]
+    },
+    {
+        id: "dimethoate",
+        name: "Dimethoate",
+        type: "pesticide",
+        description: "Organophosphate insecticide associated with neurotoxic and long-term health concerns.",
+        effects: [
+            "Cholinesterase inhibition",
+            "Neurotoxicity",
+            "Association with malignant brain tumors in high-exposure cohorts"
+        ],
+        diseases: ["Brain Tumors", "Glioblastoma Multiforme", "Medulloblastoma"],
+        foundIn: ["Apple", "Tomato", "Cabbage", "Green Chilli"],
+        detectionLocations: [
+            {
+                place: "Kashmir Valley, India",
+                sample: "Agricultural-use exposure in orchard/farm populations",
+                year: 2024,
+                note: "Case-control analysis reported elevated CNS tumor risk with specific pesticide exposures."
+            }
+        ],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/39292407/"
+        ]
+    },
+    {
+        id: "phosalone",
+        name: "Phosalone",
+        type: "pesticide",
+        description: "Organophosphate pesticide used in crop systems; exposure is linked with neurotoxic outcomes.",
+        effects: [
+            "Autonomic and central nervous system toxicity",
+            "Association with malignant brain tumors in high-exposure groups"
+        ],
+        diseases: ["Brain Tumors", "Astrocytoma", "Ependymoma"],
+        foundIn: ["Apple", "Grape", "Tomato"],
+        detectionLocations: [
+            {
+                place: "Kashmir Valley, India",
+                sample: "Agricultural exposure histories",
+                year: 2024,
+                note: "Included in pesticide panel in CNS tumor case-control data."
+            }
+        ],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/39292407/"
+        ]
+    },
+    {
+        id: "captan",
+        name: "Captan",
+        type: "fungicide",
+        description: "Fungicide used in fruit production with chronic exposure concerns in occupational settings.",
+        effects: [
+            "Respiratory and skin irritation",
+            "Association with malignant brain tumor burden in exposed cohorts"
+        ],
+        diseases: [
+            "Brain Tumors",
+            "Glioblastoma Multiforme",
+            "Anaplastic Oligodendroglioma",
+            "Choroid Plexus Papilloma"
+        ],
+        foundIn: ["Apple", "Grape"],
+        detectionLocations: [
+            {
+                place: "Kashmir Valley, India",
+                sample: "Case-control occupational pesticide exposure dataset",
+                year: 2024,
+                note: "Study evaluated fungicide and insecticide exposure in CNS tumors."
+            }
+        ],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/39292407/"
+        ]
+    },
+    {
+        id: "methyl_bromide",
+        name: "Methyl Bromide",
+        type: "poison",
+        aliases: ["Bromomethane"],
+        description: "Fumigant used in stored-grain and quarantine settings; high exposure can be neurotoxic.",
+        effects: [
+            "Unstable gait",
+            "Vertigo",
+            "Polyneuropathy",
+            "Optic neuropathy",
+            "Glutathione depletion in multiple tissues"
+        ],
+        diseases: ["Polyneuropathy", "Optic Neuropathy"],
+        foundIn: ["Wheat Flour", "Rice", "Chickpea"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/30245170/"
+        ]
+    },
+    {
+        id: "phosphine",
+        name: "Phosphine",
+        type: "poison",
+        description: "Fumigation gas from aluminum phosphide used in grain storage; acute poisonings can be severe.",
+        effects: [
+            "Severe oxidative stress",
+            "Multiorgan injury including liver, lung and heart",
+            "Neurological sequelae in survivors"
+        ],
+        diseases: ["Heart Failure", "Neurological Disorders"],
+        foundIn: ["Rice", "Wheat Flour", "Pigeon Pea (Toor Dal)"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/35364745/"
+        ]
+    },
+    {
+        id: "pyrethroids",
+        name: "Pyrethroid Pesticides",
+        type: "pesticide",
+        description: "Insecticide class that can cause neurocutaneous symptoms in acute or high-level exposure.",
+        effects: [
+            "Itching and burning skin sensation",
+            "Paresthesia",
+            "Muscle twitching"
+        ],
+        diseases: ["Neurological Disorders"],
+        foundIn: ["Cabbage", "Tomato", "Capsicum", "Cucumber"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/32578811/"
+        ]
+    },
+    {
+        id: "bisphenol_a",
+        name: "Bisphenol A (BPA)",
+        type: "poison",
+        description: "Endocrine-active chemical that can migrate from some can linings and plastic contact materials.",
+        effects: [
+            "Endothelial dysfunction",
+            "Association with angina and accelerated atherosclerosis"
+        ],
+        diseases: ["Atherosclerosis", "Myocardial Infarction", "Cardiovascular Disease"],
+        foundIn: ["Packaged Ready Meals", "Canned Foods", "Chocolate"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/17030592/"
+        ]
+    },
+    {
+        id: "nitrofurans",
+        name: "Nitrofuran Residues",
+        type: "residue",
+        description: "Banned/restricted veterinary antimicrobials with residue concerns in aquaculture chains.",
+        effects: [
+            "Potential carcinogenic concern",
+            "Antimicrobial resistance pressure"
+        ],
+        diseases: ["Cancer", "Antimicrobial Resistance"],
+        foundIn: ["Shrimp", "Fish"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/33746363/"
+        ]
+    },
+    {
+        id: "chloramphenicol",
+        name: "Chloramphenicol Residues",
+        type: "residue",
+        description: "Restricted antibiotic residue of concern in aquaculture products in some markets.",
+        effects: [
+            "Bone marrow suppression concern",
+            "Antimicrobial resistance pressure"
+        ],
+        diseases: ["Antimicrobial Resistance", "Bone Loss"],
+        foundIn: ["Shrimp", "Fish"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/33746363/"
+        ]
+    },
+    {
+        id: "sodium_benzoate",
+        name: "Sodium Benzoate",
+        type: "adulterant",
+        description: "Common preservative; excess or susceptible exposure has been linked to oxidative and behavioral concerns.",
+        effects: [
+            "Allergic reactions",
+            "Oxidative stress",
+            "DNA damage signals in experimental systems",
+            "Hyperactivity and anxiety signals in susceptible populations"
+        ],
+        diseases: ["Gastrointestinal Disease", "Immune Dysfunction"],
+        foundIn: ["Fish", "Packaged Ready Meals", "Canned Foods"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/24257217/",
+            "https://pubmed.ncbi.nlm.nih.gov/27497115/"
+        ]
+    },
+    {
+        id: "ammonia_ice_adulteration",
+        name: "Ammonia in Ice (Adulteration)",
+        type: "adulterant",
+        description: "Illegal ammonia use in icing can irritate gastrointestinal and respiratory mucosa.",
+        effects: [
+            "Gastric irritation",
+            "Intestinal tissue irritation",
+            "Airway irritation"
+        ],
+        diseases: ["Gastrointestinal Disease"],
+        foundIn: ["Fish", "Shrimp"],
+        citations: [
+            "https://www.atsdr.cdc.gov/toxprofiles/tp126.pdf"
+        ]
+    },
+    {
+        id: "alum_fitkari",
+        name: "Alum (Fitkari) Misuse",
+        type: "adulterant",
+        description: "Aluminum salt misuse in food handling can increase aluminum exposure burden.",
+        effects: [
+            "Kidney stress in high exposure scenarios",
+            "Gastrointestinal irritation"
+        ],
+        diseases: ["Kidney Disease", "Gastrointestinal Disease"],
+        foundIn: ["Herbs", "Leafy Greens"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/30688604/"
+        ]
+    },
+    {
+        id: "soapstone_talc",
+        name: "Soapstone/Talc Adulteration",
+        type: "adulterant",
+        description: "Adulteration and polishing agent concerns in pulses; talc contamination can carry mineral hazards.",
+        effects: [
+            "Gastrointestinal irritation",
+            "Potential asbestos-linked concern when contaminated talc is used"
+        ],
+        diseases: ["Gastrointestinal Disease", "Cancer"],
+        foundIn: ["Red Lentil (Masoor Dal)", "Pigeon Pea (Toor Dal)", "Mung Bean (Moong Dal)"],
+        citations: [
+            "Thankamma Jacob, Poisons in Our Food",
+            "https://www.who.int/news-room/fact-sheets/detail/asbestos-elimination-of-asbestos-related-diseases"
+        ]
+    },
+    {
+        id: "pesticide_cocktail",
+        name: "Pesticide Cocktail (Mixed Exposure)",
+        type: "poison",
+        description: "Mixtures of pesticides can show additive/synergistic toxicity beyond single-agent assumptions.",
+        effects: [
+            "Systemic inflammation",
+            "Linear association with 10-year ASCVD risk in mixed exposure analyses"
+        ],
+        diseases: ["Atherosclerosis", "Cardiovascular Disease", "Myocardial Infarction"],
+        foundIn: ["Tomato", "Cabbage", "Spinach", "Apple"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/28701387/"
+        ]
+    },
+    {
+        id: "bacterial_endotoxins_lps",
+        name: "Bacterial Endotoxins (LPS)",
+        type: "poison",
+        description: "Lipopolysaccharides in contaminated foods can trigger systemic inflammation and cardiac stress.",
+        effects: [
+            "Systemic inflammation",
+            "Depressed cardiac contractility"
+        ],
+        diseases: ["Heart Failure", "Cardiovascular Disease", "Foodborne Infection"],
+        foundIn: ["Chicken Meat", "Milk", "Cheese"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/30356064/"
+        ]
+    },
+    {
+        id: "citreoviridin",
+        name: "Citreoviridin",
+        type: "poison",
+        description: "Mycotoxin historically associated with cardiac beriberi in moldy rice exposures.",
+        effects: [
+            "Cardiac toxicity",
+            "Sudden cardiac arrest risk in severe exposure"
+        ],
+        diseases: ["Heart Failure", "Myocardial Infarction"],
+        foundIn: ["Rice"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/2443046/"
+        ]
+    },
+    {
+        id: "t2_toxin",
+        name: "T-2 Toxin",
+        type: "poison",
+        description: "Trichothecene mycotoxin with oxidative and cardiotoxic injury potential.",
+        effects: [
+            "Oxidative tissue injury",
+            "Cardiac tissue toxicity",
+            "Blood pressure dysregulation"
+        ],
+        diseases: ["Hypertension", "Cardiovascular Disease"],
+        foundIn: ["Wheat Flour", "Rice", "Jaggery"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/32872081/"
+        ]
+    },
+    {
+        id: "acrolein",
+        name: "Acrolein",
+        type: "poison",
+        description: "Reactive aldehyde generated in high-heat frying and polluted agricultural environments.",
+        effects: [
+            "Endothelial irritation",
+            "Platelet activation and thrombosis tendency"
+        ],
+        diseases: ["Myocardial Infarction", "Cardiovascular Disease"],
+        foundIn: ["Sunflower Oil", "Palm Oil", "Mustard Oil"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/16362847/"
+        ]
+    },
+    {
+        id: "artificial_sweeteners",
+        name: "Artificial Sweeteners (High Intake)",
+        type: "adulterant",
+        aliases: ["Erythritol", "Aspartame", "Sucralose"],
+        description: "High intake exposure patterns are under investigation for thrombotic and cardiometabolic effects.",
+        effects: [
+            "Enhanced platelet responsiveness (reported for erythritol)",
+            "Potentially increased clotting tendency"
+        ],
+        diseases: ["Myocardial Infarction", "Stroke", "Cardiovascular Disease"],
+        foundIn: ["Packaged Ready Meals", "Canned Foods", "Chocolate"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/36849732/"
+        ]
+    },
+    {
+        id: "pfas",
+        name: "PFAS (Per- and Polyfluoroalkyl Substances)",
+        type: "poison",
+        description: "Persistent fluorinated contaminants linked to dyslipidemia, endocrine disruption and immune effects.",
+        effects: [
+            "Lipid metabolism disruption",
+            "Immune suppression risk",
+            "Endocrine and developmental concerns"
+        ],
+        diseases: ["Cardiovascular Disease", "Immune Dysfunction", "Endocrine and Reproductive Effects", "Cancer"],
+        foundIn: ["Fish", "Shrimp", "Packaged Ready Meals", "Canned Foods"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/33049253/",
+            "https://www.epa.gov/pfas/our-current-understanding-human-health-and-environmental-risks-pfas"
+        ]
+    },
+    {
+        id: "ptfe_teflon_exposure",
+        name: "PTFE/Teflon Thermal Decomposition Exposure",
+        type: "poison",
+        description: "Overheated non-stick cookware can release decomposition fumes with acute respiratory toxicity.",
+        effects: [
+            "Polymer fume fever",
+            "Respiratory irritation"
+        ],
+        diseases: ["Gastrointestinal Disease", "Cardiovascular Disease"],
+        foundIn: ["Packaged Ready Meals", "Cooked Foods"],
+        citations: [
+            "https://www.ncbi.nlm.nih.gov/books/NBK594276/"
+        ]
+    },
+    {
+        id: "plastic_packaging_migration",
+        name: "Plastic Packaging Migration (Microwave Risk)",
+        type: "poison",
+        description: "Heating food in some plastic containers can increase migration of micro/nanoplastics and additives.",
+        effects: [
+            "Genotoxicity concern",
+            "Oxidative stress",
+            "Gut microbiome disruption"
+        ],
+        diseases: ["Cancer", "Gastrointestinal Disease", "Infertility"],
+        foundIn: ["Packaged Ready Meals", "Takeaway Foods", "Canned Foods"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/38897105/"
+        ]
+    },
+    {
+        id: "nanoplastics",
+        name: "Nanoplastics",
+        type: "poison",
+        description: "Sub-micron plastic particles with emerging evidence of systemic inflammatory and cardiopulmonary effects.",
+        effects: [
+            "Cardiopulmonary effects",
+            "Inflammatory responses",
+            "Oxidative stress",
+            "Potential nutrient absorption and microflora disruption"
+        ],
+        diseases: ["Cardiovascular Disease", "Gastrointestinal Disease", "Infertility"],
+        foundIn: ["Fish", "Shrimp", "Packaged Ready Meals"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/36380951/"
+        ]
+    },
+    {
+        id: "parasitic_worms",
+        name: "Parasitic Worm Contamination",
+        type: "poison",
+        aliases: ["Helminths", "Nematodes"],
+        description: "Foodborne helminths in fish and other foods remain a major global burden.",
+        effects: [
+            "Abdominal pain",
+            "Diarrhea",
+            "Nutritional compromise"
+        ],
+        diseases: ["Foodborne Infection", "Gastrointestinal Disease"],
+        foundIn: ["Fish", "Shrimp", "Leafy Greens"],
+        citations: [
+            "https://www.who.int/news-room/fact-sheets/detail/foodborne-trematode-infections"
+        ]
+    },
+    {
+        id: "copper_excess",
+        name: "Copper (Excess Exposure)",
+        type: "heavy-metal",
+        aliases: ["Cu"],
+        description: "Copper is essential but excessive dietary/environmental intake can be hepatotoxic and pro-oxidative.",
+        effects: [
+            "Oxidative stress",
+            "Gastrointestinal irritation",
+            "Liver injury in high exposure"
+        ],
+        diseases: ["Gastrointestinal Disease", "Liver Cancer"],
+        foundIn: ["Fish", "Chocolate"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/34649206/"
+        ]
+    },
+    {
+        id: "zinc_excess",
+        name: "Zinc (Excess Exposure)",
+        type: "heavy-metal",
+        aliases: ["Zn"],
+        description: "Zinc is essential but excessive intake can disrupt copper metabolism and GI health.",
+        effects: [
+            "Nausea and abdominal pain",
+            "Copper metabolism disruption"
+        ],
+        diseases: ["Gastrointestinal Disease"],
+        foundIn: ["Fish"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/34649206/"
+        ]
+    },
+
+    {
+        id: "chocolate",
+        name: "Chocolate",
+        type: "food",
+        description: "Cocoa-derived food where cadmium and lead burdens can vary by origin and processing.",
+        connected_to: ["lead", "cadmium", "copper_excess", "bisphenol_a", "artificial_sweeteners"],
+        detectionLocations: [
+            {
+                place: "Brazilian market dataset",
+                sample: "Commercial chocolates",
+                year: 2024,
+                note: "Estimated exposure values were below benchmark limits in this cohort."
+            },
+            {
+                place: "Global cocoa/chocolate evidence synthesis",
+                sample: "Systematic review and meta-analysis",
+                year: 2024,
+                note: "Cadmium and lead concentrations vary by cocoa origin and product type."
+            }
+        ],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/38763644/",
+            "https://pubmed.ncbi.nlm.nih.gov/39144282/"
+        ]
+    },
+    {
+        id: "mulberry",
+        name: "Mulberry",
+        type: "food",
+        description: "Berry fruit; contamination profile depends on farming inputs and handling.",
+        connected_to: ["organophosphate_pesticides", "pyrethroids"]
+    },
+    {
+        id: "raspberry",
+        name: "Raspberry",
+        type: "food",
+        description: "Berry crop often represented in international pesticide residue monitoring.",
+        connected_to: ["organophosphate_pesticides", "pyrethroids"]
+    },
+    {
+        id: "blueberry",
+        name: "Blueberry",
+        type: "food",
+        description: "Berry commodity included in global residue and packaging migration discussions.",
+        connected_to: ["organophosphate_pesticides", "pyrethroids", "plastic_packaging_migration"]
+    },
+    {
+        id: "cluster_beans",
+        name: "Cluster Beans",
+        type: "food",
+        description: "Legume vegetable where pesticide management and washing practices influence residue exposure.",
+        connected_to: ["organophosphate_pesticides", "pyrethroids"]
+    },
+    {
+        id: "cowpea_beans",
+        name: "Cowpea Beans",
+        type: "food",
+        description: "Pulse legume included in residue risk discussions in tropical farming systems.",
+        connected_to: ["organophosphate_pesticides", "organochlorine_pesticides"]
+    },
+    {
+        id: "coconut",
+        name: "Coconut",
+        type: "food",
+        description: "Food and oil source with contamination profile tied to processing and storage.",
+        connected_to: ["organophosphate_pesticides", "aflatoxin_m1"]
+    },
+    {
+        id: "capsicum",
+        name: "Capsicum",
+        type: "food",
+        description: "Common vegetable represented in pesticide residue surveillance datasets.",
+        connected_to: ["organophosphate_pesticides", "pyrethroids", "chlorpyrifos"]
+    },
+    {
+        id: "button_mushroom",
+        name: "Button Mushroom",
+        type: "food",
+        description: "Cultivated mushroom where substrate quality and handling drive contamination profile.",
+        connected_to: ["lead", "cadmium"]
+    },
+    {
+        id: "oyster_mushroom",
+        name: "Oyster Mushroom",
+        type: "food",
+        description: "Cultivated mushroom with metal uptake potential depending on substrate and water quality.",
+        connected_to: ["lead", "cadmium"]
+    },
+    {
+        id: "broccoli",
+        name: "Broccoli",
+        type: "food",
+        description: "Cruciferous vegetable included in urban residue monitoring programs globally.",
+        connected_to: ["organophosphate_pesticides", "pyrethroids", "lead"]
+    },
+    {
+        id: "watermelon",
+        name: "Watermelon",
+        type: "food",
+        description: "Melon crop where pesticide and heavy metal exposure can vary by irrigation source.",
+        connected_to: ["organophosphate_pesticides", "lead"]
+    },
+    {
+        id: "muskmelon",
+        name: "Muskmelon",
+        type: "food",
+        description: "Melon with contamination profile shaped by soil, water and pesticide practices.",
+        connected_to: ["organophosphate_pesticides", "lead"]
+    },
+    {
+        id: "curry_leaf",
+        name: "Curry Leaf",
+        type: "food",
+        description: "Leafy herb often consumed fresh, making residue washing practices relevant.",
+        connected_to: ["organophosphate_pesticides", "pyrethroids", "lead"]
+    },
+    {
+        id: "red_chillies",
+        name: "Red Chillies",
+        type: "food",
+        description: "Spice crop where drying and storage influence contamination burden.",
+        connected_to: ["organophosphate_pesticides", "aflatoxin_m1"]
+    },
+    {
+        id: "sweet_potato",
+        name: "Sweet Potato",
+        type: "food",
+        description: "Root crop where environmental metal uptake can occur.",
+        connected_to: ["lead", "cadmium", "acrylamide"]
+    },
+    {
+        id: "yam",
+        name: "Yam",
+        type: "food",
+        description: "Tuber crop with contamination profile linked to soil quality.",
+        connected_to: ["lead", "cadmium"]
+    },
+    {
+        id: "madras_cucumber",
+        name: "Madras Cucumber",
+        type: "food",
+        description: "Regional vegetable where irrigation and pesticide use determine residue load.",
+        connected_to: ["organophosphate_pesticides", "pyrethroids"]
+    },
+    {
+        id: "ivy_gourd",
+        name: "Coccinea (Ivy Gourd)",
+        type: "food",
+        description: "Vegetable consumed widely in India; monitored under broad pesticide classes.",
+        connected_to: ["organophosphate_pesticides", "pyrethroids"]
+    },
+    {
+        id: "banana_stem",
+        name: "Banana Stem",
+        type: "food",
+        description: "Traditional food ingredient with contamination profile tied to cultivation inputs.",
+        connected_to: ["organophosphate_pesticides"]
+    },
+    {
+        id: "banana_flower",
+        name: "Banana Flower",
+        type: "food",
+        description: "Traditional edible flower with agricultural-input-dependent residue profile.",
+        connected_to: ["organophosphate_pesticides"]
+    },
+    {
+        id: "jackfruit",
+        name: "Jackfruit",
+        type: "food",
+        description: "Tropical fruit represented in local contamination and adulteration contexts.",
+        connected_to: ["organophosphate_pesticides", "lead"]
+    },
+    {
+        id: "flat_beans",
+        name: "Flat Beans",
+        type: "food",
+        description: "Pod vegetable where pesticide handling practices influence residues.",
+        connected_to: ["organophosphate_pesticides", "pyrethroids"]
+    },
+    {
+        id: "turmeric",
+        name: "Turmeric",
+        type: "food",
+        description: "Spice root that can accumulate contaminants from soil and post-harvest adulteration.",
+        connected_to: ["lead", "chromium"]
+    },
+    {
+        id: "mango_ginger",
+        name: "Mango Ginger",
+        type: "food",
+        description: "Rhizome crop with contamination pattern similar to other root spices.",
+        connected_to: ["lead", "organophosphate_pesticides"]
+    },
+    {
+        id: "orange",
+        name: "Orange",
+        type: "food",
+        description: "Citrus fruit represented in global pesticide residue surveillance.",
+        connected_to: ["organophosphate_pesticides"]
+    },
+    {
+        id: "ber",
+        name: "Ber (Indian Jujube)",
+        type: "food",
+        description: "Traditional fruit where residue profile depends on orchard management.",
+        connected_to: ["organophosphate_pesticides"]
+    },
+    {
+        id: "radish",
+        name: "Radish",
+        type: "food",
+        description: "Root vegetable included in urban market residue studies.",
+        connected_to: ["organophosphate_pesticides", "lead", "cadmium"]
+    },
+    {
+        id: "longan",
+        name: "Longan",
+        type: "food",
+        description: "Fruit included in global produce safety monitoring contexts.",
+        connected_to: ["organophosphate_pesticides"]
+    },
+    {
+        id: "pineapple",
+        name: "Pineapple",
+        type: "food",
+        description: "Tropical fruit where contamination profile depends on cultivation and post-harvest handling.",
+        connected_to: ["organophosphate_pesticides"]
+    },
+    {
+        id: "mint_leaf",
+        name: "Mint Leaf",
+        type: "food",
+        description: "Leafy herb often eaten raw, increasing relevance of wash/peel interventions.",
+        connected_to: ["organophosphate_pesticides", "pyrethroids", "lead"]
+    },
+    {
+        id: "coriander_leaf",
+        name: "Coriander Leaf",
+        type: "food",
+        description: "Herb with high surface-area exposure to spray residues.",
+        connected_to: ["organophosphate_pesticides", "pyrethroids", "lead"]
+    },
+    {
+        id: "drumstick_leaf",
+        name: "Drumstick Leaf",
+        type: "food",
+        description: "Leaf vegetable where environmental exposure and washing quality affect risk.",
+        connected_to: ["organophosphate_pesticides", "lead"]
+    },
+    {
+        id: "drumstick",
+        name: "Drumstick (Moringa Pods)",
+        type: "food",
+        description: "Vegetable pod with contamination profile linked to cultivation inputs.",
+        connected_to: ["organophosphate_pesticides", "lead"]
+    },
+    {
+        id: "ginger",
+        name: "Ginger",
+        type: "food",
+        description: "Root spice with potential heavy metal contamination in polluted soils.",
+        connected_to: ["lead", "cadmium"]
+    },
+    {
+        id: "garlic",
+        name: "Garlic",
+        type: "food",
+        description: "Bulb crop monitored in mixed heavy-metal and pesticide surveys.",
+        connected_to: ["lead", "cadmium", "organophosphate_pesticides"]
+    },
+    {
+        id: "ridge_gourd",
+        name: "Ridge Gourd",
+        type: "food",
+        description: "Vegetable crop in residue monitoring frameworks.",
+        connected_to: ["organophosphate_pesticides", "pyrethroids"]
+    },
+    {
+        id: "bitter_gourd",
+        name: "Bitter Gourd",
+        type: "food",
+        description: "Vegetable often represented in pesticide residue monitoring programs.",
+        connected_to: ["organophosphate_pesticides", "pyrethroids"]
+    },
+    {
+        id: "cucumber",
+        name: "Cucumber",
+        type: "food",
+        description: "High-water vegetable frequently evaluated in multi-residue studies.",
+        connected_to: ["organophosphate_pesticides", "pyrethroids", "lead"]
+    },
+    {
+        id: "jaggery",
+        name: "Jaggery",
+        type: "food",
+        description: "Traditional sweetener where storage and processing quality can influence contamination.",
+        connected_to: ["t2_toxin", "lead", "sodium_benzoate"]
+    },
+    {
+        id: "almonds",
+        name: "Almonds",
+        type: "food",
+        description: "Nut source of selenium and zinc support in balanced diets.",
+        connected_to: ["aflatoxin_m1", "selenium_zinc_support"]
+    },
+    {
+        id: "cashew",
+        name: "Cashew",
+        type: "food",
+        description: "Nut consumed globally; contamination risk depends on storage and processing.",
+        connected_to: ["aflatoxin_m1", "selenium_zinc_support"]
+    },
+    {
+        id: "walnut",
+        name: "Walnut",
+        type: "food",
+        description: "Nut food relevant in diet-based mitigation strategies.",
+        connected_to: ["selenium_zinc_support"]
+    },
+    {
+        id: "sunflower_oil",
+        name: "Sunflower Oil",
+        type: "food",
+        description: "Cooking oil where repeated high-heat use can generate reactive toxic aldehydes.",
+        connected_to: ["trans_fats", "acrolein"]
+    },
+    {
+        id: "palm_oil",
+        name: "Palm Oil",
+        type: "food",
+        description: "Cooking fat where process quality and high-heat reuse influence risk profile.",
+        connected_to: ["trans_fats", "acrolein"]
+    },
+    {
+        id: "soybean_oil",
+        name: "Soybean Oil",
+        type: "food",
+        description: "Widely used oil with contamination/adulteration risk depending on handling.",
+        connected_to: ["trans_fats", "acrolein"]
+    },
+    {
+        id: "coconut_oil",
+        name: "Coconut Oil",
+        type: "food",
+        description: "Oil used in many regions; high-heat reuse still generates reactive compounds.",
+        connected_to: ["acrolein"]
+    },
+    {
+        id: "olive_oil",
+        name: "Olive Oil",
+        type: "food",
+        description: "Edible oil with lower contamination risk when authentic and not repeatedly overheated.",
+        connected_to: ["acrolein"]
+    },
+    {
+        id: "rice_bran_oil",
+        name: "Rice Bran Oil",
+        type: "food",
+        description: "Edible oil where oxidation and adulteration controls remain important.",
+        connected_to: ["trans_fats", "acrolein"]
+    },
+    {
+        id: "tuna",
+        name: "Tuna",
+        type: "food",
+        description: "Predatory fish species with elevated methylmercury concern in many geographies.",
+        connected_to: ["mercury", "pfas", "microplastics", "nanoplastics"]
+    },
+    {
+        id: "sardine",
+        name: "Sardine",
+        type: "food",
+        description: "Lower trophic fish generally lower in mercury than large predators, but still monitored.",
+        connected_to: ["microplastics", "nanoplastics"]
+    },
+    {
+        id: "mackerel",
+        name: "Mackerel",
+        type: "food",
+        description: "Marine fish species included in heavy-metal and microplastic surveillance.",
+        connected_to: ["mercury", "microplastics", "pfas"]
+    },
+    {
+        id: "salmon",
+        name: "Salmon",
+        type: "food",
+        description: "Internationally consumed fish where microplastics and persistent contaminants are monitored.",
+        connected_to: ["microplastics", "pfas", "nitrofurans"]
+    },
+    {
+        id: "rohu",
+        name: "Rohu",
+        type: "food",
+        description: "Common South Asian freshwater fish included in metal surveillance programs.",
+        connected_to: ["mercury", "lead", "cadmium", "microplastics"]
+    },
+    {
+        id: "catla",
+        name: "Catla",
+        type: "food",
+        description: "Indian freshwater fish with contamination profile linked to water quality.",
+        connected_to: ["mercury", "lead", "cadmium", "microplastics"]
+    },
+    {
+        id: "canned_foods",
+        name: "Canned Foods",
+        type: "food",
+        description: "Processed foods where can-lining migration and additive load are risk factors.",
+        connected_to: ["bisphenol_a", "sodium_benzoate", "pfas", "plastic_packaging_migration"]
+    },
+    {
+        id: "packaged_ready_meals",
+        name: "Packaged Ready Meals",
+        type: "food",
+        description: "Convenience foods where packaging migration risk rises when heated in unsuitable containers.",
+        connected_to: ["plastic_packaging_migration", "bisphenol_a", "artificial_sweeteners", "pfas"]
+    },
+    {
+        id: "takeaway_foods",
+        name: "Takeaway Foods",
+        type: "food",
+        description: "Takeaway and fast-food packaging can contribute to PFAS and plastic additive migration burden.",
+        connected_to: ["plastic_packaging_migration", "pfas"]
+    },
+    {
+        id: "leafy_greens",
+        name: "Leafy Greens",
+        type: "food",
+        description: "Broad leafy-vegetable group with pesticide and washing-related exposure relevance.",
+        connected_to: ["organophosphate_pesticides", "pyrethroids", "alum_fitkari", "parasitic_worms"]
+    },
+    {
+        id: "herbs",
+        name: "Herbs",
+        type: "food",
+        description: "Fresh herbs are often eaten raw and require stringent cleaning and source control.",
+        connected_to: ["organophosphate_pesticides", "alum_fitkari", "lead"]
+    },
+    {
+        id: "cooked_foods",
+        name: "Cooked Foods",
+        type: "food",
+        description: "Cooking technique and container choice affect process contaminants and migration risk.",
+        connected_to: ["acrylamide", "acrolein", "ptfe_teflon_exposure"]
+    },
+
+    {
+        id: "autoimmune_disorders",
+        name: "Autoimmune Disorders",
+        type: "disease",
+        description: "Immune dysregulation disorders potentially influenced by chronic toxicant exposure.",
+        connected_to: ["immune_dysfunction", "systemic_lupus_erythematosus", "autoimmune_thyroiditis"]
+    },
+    {
+        id: "systemic_lupus_erythematosus",
+        name: "Systemic Lupus Erythematosus",
+        type: "disease",
+        description: "Autoimmune disease node added for exposure-risk relationship exploration."
+    },
+    {
+        id: "autoimmune_thyroiditis",
+        name: "Autoimmune Thyroiditis",
+        type: "disease",
+        description: "Autoimmune thyroid disease node for endocrine-immune disruption mapping."
+    },
+    {
+        id: "arrhythmia",
+        name: "Arrhythmia",
+        type: "disease",
+        description: "Abnormal heart rhythm that can be triggered by neurotoxic or cardiotoxic exposures.",
+        connected_to: ["cardiovascular_disease"]
+    },
+    {
+        id: "atherosclerosis",
+        name: "Atherosclerosis",
+        type: "disease",
+        description: "Arterial plaque disease linked to chronic inflammation, dyslipidemia and toxic exposures.",
+        connected_to: ["cardiovascular_disease"]
+    },
+    {
+        id: "myocardial_infarction",
+        name: "Myocardial Infarction",
+        type: "disease",
+        description: "Acute coronary thrombosis event associated with plaque instability and pro-thrombotic states.",
+        connected_to: ["cardiovascular_disease"]
+    },
+    {
+        id: "heart_failure",
+        name: "Heart Failure",
+        type: "disease",
+        description: "Reduced pumping capacity of the heart, can be aggravated by toxic and inflammatory burdens.",
+        connected_to: ["cardiovascular_disease"]
+    },
+    {
+        id: "brain_tumors",
+        name: "Brain Tumors",
+        type: "disease",
+        description: "Group node for malignant and non-malignant CNS tumors linked in pesticide-exposure datasets.",
+        connected_to: ["cancer"]
+    },
+    {
+        id: "glioblastoma_multiforme",
+        name: "Glioblastoma Multiforme",
+        type: "disease",
+        description: "Aggressive malignant brain tumor subtype."
+    },
+    {
+        id: "medulloblastoma",
+        name: "Medulloblastoma",
+        type: "disease",
+        description: "Highly malignant embryonal CNS tumor."
+    },
+    {
+        id: "astrocytoma",
+        name: "Astrocytoma",
+        type: "disease",
+        description: "Glial-origin tumor spectrum including high-grade forms."
+    },
+    {
+        id: "anaplastic_oligodendroglioma",
+        name: "Anaplastic Oligodendroglioma",
+        type: "disease",
+        description: "High-grade oligodendroglial tumor subtype."
+    },
+    {
+        id: "ependymoma",
+        name: "Ependymoma",
+        type: "disease",
+        description: "Tumor arising from ependymal cells in brain or spinal cord."
+    },
+    {
+        id: "choroid_plexus_papilloma",
+        name: "Choroid Plexus Papilloma",
+        type: "disease",
+        description: "Rare intraventricular tumor subtype."
+    },
+    {
+        id: "polyneuropathy",
+        name: "Polyneuropathy",
+        type: "disease",
+        description: "Diffuse peripheral nerve dysfunction linked with toxic exposures."
+    },
+    {
+        id: "optic_neuropathy",
+        name: "Optic Neuropathy",
+        type: "disease",
+        description: "Optic nerve dysfunction that can occur in toxic exposure contexts."
+    },
+    {
+        id: "drug_induced_lupus",
+        name: "Drug-Induced Lupus",
+        type: "disease",
+        description: "Autoimmune-like syndrome associated with selected medications."
+    },
+    {
+        id: "bone_loss",
+        name: "Bone Loss",
+        type: "disease",
+        description: "Reduced bone mineral density linked with chronic toxicant and nutritional stress."
+    },
+    {
+        id: "infertility",
+        name: "Infertility",
+        type: "disease",
+        description: "Reproductive outcome associated with multiple endocrine and genotoxic exposures."
+    },
+    {
+        id: "hypertension",
+        name: "Hypertension",
+        type: "disease",
+        description: "Elevated blood pressure with multifactorial toxic and metabolic determinants."
+    },
+    {
+        id: "stroke",
+        name: "Stroke",
+        type: "disease",
+        description: "Acute cerebrovascular event associated with thrombotic and vascular risk factors."
+    },
+
+    {
+        id: "itching",
+        name: "Itching",
+        type: "symptom",
+        description: "Common neurocutaneous symptom in pyrethroid exposure."
+    },
+    {
+        id: "burning_sensation",
+        name: "Burning Sensation",
+        type: "symptom",
+        description: "Paresthesia-like burning sensation can occur in pyrethroid toxicity."
+    },
+    {
+        id: "muscle_twitching",
+        name: "Muscle Twitching",
+        type: "symptom",
+        description: "Neuromuscular hyperexcitability symptom in select toxic exposures."
+    },
+    {
+        id: "tinnitus",
+        name: "Tinnitus",
+        type: "symptom",
+        description: "Auditory symptom reported with ototoxic and vestibular-toxic compounds."
+    },
+    {
+        id: "oscillopsia",
+        name: "Oscillopsia",
+        type: "symptom",
+        description: "Illusion of moving visual field, classically seen in vestibulotoxic injury."
+    },
+    {
+        id: "balance_impairment",
+        name: "Balance Impairment",
+        type: "symptom",
+        description: "Vestibular and neurological symptom."
+    },
+
+    {
+        id: "selenium_zinc_support",
+        name: "Selenium and Zinc Support",
+        type: "remedy",
+        description: "Adequate selenium and zinc intake supports antioxidant defense and heavy-metal response pathways.",
+        connected_to: ["mercury", "lead", "cadmium", "arsenic", "zinc_excess"]
+    },
+    {
+        id: "medical_chelation",
+        name: "Medical Chelation (Supervised)",
+        type: "remedy",
+        description: "Chelation should only be used under specialist supervision after confirmed heavy-metal diagnosis.",
+        connected_to: ["arsenic", "lead", "mercury", "cadmium"]
+    },
+    {
+        id: "avoid_microwaving_plastic",
+        name: "Avoid Microwaving Food in Plastic Packaging",
+        type: "remedy",
+        description: "Use glass/ceramic for reheating to reduce microplastic/additive migration from unsuitable plastics.",
+        connected_to: ["plastic_packaging_migration", "nanoplastics", "bisphenol_a"]
+    },
+    {
+        id: "choose_low_trophic_fish",
+        name: "Choose Lower-Trophic Fish More Often",
+        type: "remedy",
+        description: "Selecting smaller fish species can reduce mercury burden while retaining nutritional benefits.",
+        connected_to: ["mercury", "pfas", "microplastics"]
+    },
+    {
+        id: "cold_chain_hygiene",
+        name: "Cold-Chain and Hygiene Control",
+        type: "remedy",
+        description: "Improved icing, cold-chain and hygiene reduce preservative misuse and microbial contamination in seafood.",
+        connected_to: ["formaldehyde", "ammonia_ice_adulteration", "salmonella", "campylobacter", "parasitic_worms"]
+    }
+];
+
+// Part 1 + Part 2 dataset. Additional batches can be appended in future prompts.
+const DATA = DATA_PART_1.concat(DATA_PART_2);

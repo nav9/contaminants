@@ -78,7 +78,7 @@ const VisualizationModule = (function () {
         currentNodes = nodes;
         currentLinks = links;
 
-        // Force Simulation with Categorical Layout (collision disabled)
+        // Force simulation with categorical layout and collision spacing
         simulation = d3.forceSimulation(nodes)
             .force('link', d3.forceLink(links).id(d => d.id).distance(d => {
                 // Larger distances to reduce overlap
@@ -92,12 +92,13 @@ const VisualizationModule = (function () {
                 return hasLinks ? -800 : -200;
             }))
             .force('center', d3.forceCenter(width / 2, height / 2))
-            // collision force intentionally removed so dragged nodes won't collide
+            .force('collision', d3.forceCollide().radius(d => Math.min(110, 26 + (d.name ? d.name.length * 1.6 : 0))).strength(0.7))
             .force('categorical', (alpha) => {
                 const categories = {
                     'disease': { angle: null, radius: 0 },
                     'pesticide': { angle: 0, radius: 1 },
                     'poison': { angle: 0, radius: 1 },
+                    'contaminant': { angle: 0, radius: 1 },
                     'heavy-metal': { angle: 45, radius: 1 },
                     'adulterant': { angle: 90, radius: 1 },
                     'symptom': { angle: 135, radius: 1 },
