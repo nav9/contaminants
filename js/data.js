@@ -18,7 +18,9 @@ const DATA_PART_1 = [
             "Autoimmune Disorders",
             "Arrhythmia",
             "Atherosclerosis",
-            "Myocardial Infarction"
+            "Myocardial Infarction",
+            "Stroke",
+            "ADHD"
         ],
         foundIn: [
             "Apple",
@@ -59,7 +61,8 @@ const DATA_PART_1 = [
             "https://pubmed.ncbi.nlm.nih.gov/35385990/",
             "https://pubmed.ncbi.nlm.nih.gov/20632088/",
             "https://pubmed.ncbi.nlm.nih.gov/32816635/",
-            "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4235219/"
+            "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4235219/",
+            "https://pubmed.ncbi.nlm.nih.gov/21084382/"
         ]
     },
     {
@@ -285,7 +288,7 @@ const DATA_PART_1 = [
             "Skin and hair changes",
             "Gastrointestinal and liver toxicity"
         ],
-        diseases: ["Cancer", "Cardiovascular Disease", "Neurological Disorders"],
+        diseases: ["Cancer", "Cardiovascular Disease", "Neurological Disorders", "Stroke", "Diabetes", "Lung Cancer"],
         foundIn: ["Rice", "Wheat Flour", "Potato", "Spinach", "Papaya", "Milk", "Fish"],
         detection: {
             lab: "ICP-MS, ICP-OES, HPLC-ICP-MS",
@@ -323,7 +326,7 @@ const DATA_PART_1 = [
             "Anemia and developmental toxicity",
             "Can destabilize atherosclerotic plaques"
         ],
-        diseases: ["Neurological Disorders", "Kidney Disease", "Cardiovascular Disease"],
+        diseases: ["Neurological Disorders", "Kidney Disease", "Cardiovascular Disease", "Stroke", "ADHD", "Learning Disabilities", "Tooth Loss", "Periodontitis"],
         foundIn: [
             "Spinach",
             "Potato",
@@ -350,7 +353,10 @@ const DATA_PART_1 = [
         ],
         citations: [
             "https://pubmed.ncbi.nlm.nih.gov/36061256/",
-            "https://pubmed.ncbi.nlm.nih.gov/37225915/"
+            "https://pubmed.ncbi.nlm.nih.gov/37225915/",
+            "https://pubmed.ncbi.nlm.nih.gov/35190994/",
+            "https://pubmed.ncbi.nlm.nih.gov/39153625/",
+            "https://pubmed.ncbi.nlm.nih.gov/40481461/"
         ]
     },
     {
@@ -366,7 +372,7 @@ const DATA_PART_1 = [
             "Oxidative stress",
             "Atherosclerotic plaque instability"
         ],
-        diseases: ["Kidney Disease", "Cancer"],
+        diseases: ["Kidney Disease", "Cancer", "Stroke", "Tooth Loss", "Periodontitis", "Premature Osteoporosis"],
         foundIn: ["Spinach", "Potato", "Cabbage", "Milk", "Fish", "Shrimp"],
         detectionLocations: [
             {
@@ -384,7 +390,10 @@ const DATA_PART_1 = [
         ],
         citations: [
             "https://pubmed.ncbi.nlm.nih.gov/34649206/",
-            "https://pubmed.ncbi.nlm.nih.gov/37225915/"
+            "https://pubmed.ncbi.nlm.nih.gov/37225915/",
+            "https://pubmed.ncbi.nlm.nih.gov/35190994/",
+            "https://pubmed.ncbi.nlm.nih.gov/38295933/",
+            "https://pubmed.ncbi.nlm.nih.gov/40481461/"
         ]
     },
     {
@@ -624,7 +633,7 @@ const DATA_PART_1 = [
             "Raises LDL cholesterol",
             "Cardiovascular risk"
         ],
-        diseases: ["Cardiovascular Disease"],
+        diseases: ["Cardiovascular Disease", "Stroke"],
         foundIn: ["Butter", "Ghee", "Mustard Oil"],
         detectionLocations: [
             {
@@ -739,7 +748,7 @@ const DATA_PART_1 = [
             "Fever",
             "Diarrhea"
         ],
-        diseases: ["Foodborne Infection", "Antimicrobial Resistance"],
+        diseases: ["Foodborne Infection", "Antimicrobial Resistance", "Guillain-Barre Syndrome", "Appendicitis"],
         foundIn: ["Chicken Meat"],
         detectionLocations: [
             {
@@ -750,7 +759,9 @@ const DATA_PART_1 = [
             }
         ],
         citations: [
-            "https://pubmed.ncbi.nlm.nih.gov/29377719/"
+            "https://pubmed.ncbi.nlm.nih.gov/29377719/",
+            "https://pubmed.ncbi.nlm.nih.gov/30444562/",
+            "https://pubmed.ncbi.nlm.nih.gov/32499276/"
         ]
     },
 
@@ -1319,6 +1330,139 @@ const DATA_PART_2 = [
         ]
     },
     {
+        id: "glyphosate",
+        name: "Glyphosate",
+        type: "herbicide",
+        aliases: ["Roundup"],
+        description: "Widely used herbicide. Residues are monitored in major crop systems; cancer-risk assessments remain debated across agencies and study designs.",
+        effects: [
+            "Residues can be present on/within crops depending on use patterns and regulation",
+            "Epidemiologic evidence on non-Hodgkin lymphoma risk is mixed across meta-analyses"
+        ],
+        diseases: ["Cancer", "Non-Hodgkin Lymphoma"],
+        foundIn: ["Wheat Flour", "Rice", "Soybean"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/34397175/",
+            "https://pubmed.ncbi.nlm.nih.gov/31342895/",
+            "https://pubmed.ncbi.nlm.nih.gov/34142676/",
+            "https://pubmed.ncbi.nlm.nih.gov/27015139/"
+        ]
+    },
+    {
+        id: "paraquat",
+        name: "Paraquat",
+        type: "herbicide",
+        description: "Highly toxic herbicide; food-crop residue monitoring exists and observational evidence links exposure with Parkinson's disease risk (causality remains debated).",
+        effects: [
+            "Acute toxicity risk in poisoning",
+            "Association with increased Parkinson's disease risk reported in observational meta-analyses"
+        ],
+        diseases: ["Parkinson's Disease"],
+        foundIn: ["Spinach", "Cabbage", "Onion", "Carrot"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/31476981/",
+            "https://pubmed.ncbi.nlm.nih.gov/34400206/",
+            "https://pubmed.ncbi.nlm.nih.gov/24850699/",
+            "https://pubmed.ncbi.nlm.nih.gov/1203587/"
+        ]
+    },
+    {
+        id: "two_four_d",
+        name: "2,4-D",
+        type: "herbicide",
+        aliases: ["2,4-Dichlorophenoxyacetic acid"],
+        description: "Phenoxy herbicide with residue definitions and dietary risk assessments in cereals/maize uses.",
+        effects: [
+            "Residue tolerances and dietary risk assessments exist",
+            "Potential renal tubular and retinal effects reported in toxicology datasets"
+        ],
+        diseases: ["Endocrine and Reproductive Effects"],
+        foundIn: ["Wheat Flour", "Rice", "Soybean"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/32231942/",
+            "https://pubmed.ncbi.nlm.nih.gov/32202777/"
+        ]
+    },
+    {
+        id: "dicamba",
+        name: "Dicamba",
+        type: "herbicide",
+        description: "Herbicide used in resistant-crop systems; residue tolerances exist and human biomonitoring studies have reported increasing detection in some populations.",
+        effects: [
+            "Exposure can occur via drift, occupational contact, and environmental pathways",
+            "Residue tolerance frameworks exist in multiple jurisdictions"
+        ],
+        diseases: ["Endocrine and Reproductive Effects"],
+        citations: [
+            "https://www.epa.gov/ingredients-used-pesticide-products/dicamba"
+        ]
+    },
+    {
+        id: "chlorothalonil",
+        name: "Chlorothalonil",
+        type: "fungicide",
+        description: "Broad-spectrum fungicide with residue monitoring in vegetables and tomato-product studies.",
+        effects: [
+            "Residue persistence depends on application timing and plant metabolism",
+            "Irritation and chronic-toxicity concerns drive monitoring and PHI controls"
+        ],
+        diseases: ["Cancer"],
+        foundIn: ["Tomato"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/31051590/",
+            "https://pubmed.ncbi.nlm.nih.gov/35158253/"
+        ]
+    },
+    {
+        id: "propiconazole",
+        name: "Propiconazole",
+        type: "fungicide",
+        description: "Triazole fungicide with residue-detection methods reported for vegetable matrices.",
+        effects: [
+            "Residue monitoring supports food safety enforcement and risk assessment",
+            "Endocrine-related toxicology is evaluated in regulatory reviews for triazoles"
+        ],
+        diseases: ["Endocrine and Reproductive Effects"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/39437679/"
+        ]
+    },
+    {
+        id: "brodifacoum",
+        name: "Brodifacoum",
+        type: "poison",
+        aliases: ["Anticoagulant rodenticide (superwarfarin)"],
+        description: "Long-acting anticoagulant rodenticide; accidental contamination/ingestion can cause severe bleeding.",
+        effects: [
+            "Severe coagulopathy",
+            "Hematuria and GI bleeding can occur in poisoning"
+        ],
+        diseases: ["Brain Internal Hemorrhage", "Kidney Disease"],
+        foundIn: ["Rice", "Wheat Flour"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/24130963/",
+            "https://pubmed.ncbi.nlm.nih.gov/26111556/"
+        ]
+    },
+    {
+        id: "bromadiolone",
+        name: "Bromadiolone",
+        type: "poison",
+        aliases: ["Anticoagulant rodenticide (superwarfarin)"],
+        description: "Long-acting anticoagulant rodenticide; poisoning can present with mucosal bleeding, hematuria and intracranial hemorrhage.",
+        effects: [
+            "Severe coagulopathy",
+            "Intracranial hemorrhage has been reported in poisoning cases"
+        ],
+        diseases: ["Brain Internal Hemorrhage", "Kidney Disease"],
+        foundIn: ["Rice", "Wheat Flour"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/31556967/",
+            "https://pubmed.ncbi.nlm.nih.gov/39266966/",
+            "https://pubmed.ncbi.nlm.nih.gov/24130963/"
+        ]
+    },
+    {
         id: "methyl_bromide",
         name: "Methyl Bromide",
         type: "poison",
@@ -1378,10 +1522,28 @@ const DATA_PART_2 = [
             "Endothelial dysfunction",
             "Association with angina and accelerated atherosclerosis"
         ],
-        diseases: ["Atherosclerosis", "Myocardial Infarction", "Cardiovascular Disease"],
+        diseases: ["Atherosclerosis", "Myocardial Infarction", "Cardiovascular Disease", "Endocrine and Reproductive Effects", "Hormonal Imbalance", "Miscarriage"],
         foundIn: ["Packaged Ready Meals", "Canned Foods", "Chocolate"],
         citations: [
-            "https://pubmed.ncbi.nlm.nih.gov/17030592/"
+            "https://pubmed.ncbi.nlm.nih.gov/17030592/",
+            "https://pubmed.ncbi.nlm.nih.gov/29671677/"
+        ]
+    },
+    {
+        id: "phthalates",
+        name: "Phthalates",
+        type: "poison",
+        aliases: ["DEHP", "DBP", "DINP", "DIDP"],
+        description: "Plasticizers used in many consumer products; food-contact and processing pathways can contribute to dietary exposure.",
+        effects: [
+            "Endocrine disruption concern",
+            "Associations with adverse reproductive/pregnancy outcomes are reported in some meta-analyses"
+        ],
+        diseases: ["Endocrine and Reproductive Effects", "Hormonal Imbalance", "Miscarriage"],
+        foundIn: ["Packaged Ready Meals", "Takeaway Foods", "Canned Foods"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/32866875/",
+            "https://pubmed.ncbi.nlm.nih.gov/31882360/"
         ]
     },
     {
@@ -1581,10 +1743,21 @@ const DATA_PART_2 = [
             "Immune suppression risk",
             "Endocrine and developmental concerns"
         ],
-        diseases: ["Cardiovascular Disease", "Immune Dysfunction", "Endocrine and Reproductive Effects", "Cancer"],
+        diseases: [
+            "Cardiovascular Disease",
+            "Immune Dysfunction",
+            "Endocrine and Reproductive Effects",
+            "Hormonal Imbalance",
+            "Miscarriage",
+            "Cancer",
+            "Testicular Cancer",
+            "Stroke",
+            "ADHD"
+        ],
         foundIn: ["Fish", "Shrimp", "Packaged Ready Meals", "Canned Foods"],
         citations: [
             "https://pubmed.ncbi.nlm.nih.gov/33049253/",
+            "https://pubmed.ncbi.nlm.nih.gov/36767045/",
             "https://www.epa.gov/pfas/our-current-understanding-human-health-and-environmental-risks-pfas"
         ]
     },
@@ -2263,7 +2436,363 @@ const DATA_PART_2 = [
         id: "stroke",
         name: "Stroke",
         type: "disease",
-        description: "Acute cerebrovascular event associated with thrombotic and vascular risk factors."
+        description: "Acute cerebrovascular event associated with thrombotic and vascular risk factors.",
+        connected_to: ["hypertension", "atherosclerosis", "cardiovascular_disease", "myocardial_infarction", "brain_internal_hemorrhage", "aneurysm"]
+    },
+    {
+        id: "adhd",
+        name: "ADHD",
+        type: "disease",
+        aliases: ["Attention Deficit Hyperactivity Disorder", "Attention-Deficit/Hyperactivity Disorder"],
+        description: "Neurodevelopmental disorder. Some epidemiologic studies report associations with pesticide metabolites and heavy-metal exposure biomarkers.",
+        connected_to: ["neurological_disorders", "learning_disabilities"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/21084382/",
+            "https://pubmed.ncbi.nlm.nih.gov/39153625/",
+            "https://pubmed.ncbi.nlm.nih.gov/36767045/"
+        ]
+    },
+    {
+        id: "learning_disabilities",
+        name: "Learning Disabilities",
+        type: "disease",
+        description: "Neurodevelopmental learning impairments with multifactorial causes; included to explore neurotoxic exposure hypotheses.",
+        connected_to: ["neurological_disorders"]
+    },
+    {
+        id: "epileptic_seizures",
+        name: "Epileptic Seizures",
+        type: "disease",
+        aliases: ["Seizures"],
+        description: "Transient episodes of abnormal neuronal activity; can occur due to many medical/toxicologic causes.",
+        connected_to: ["neurological_disorders"]
+    },
+    {
+        id: "parkinsons_disease",
+        name: "Parkinson's Disease",
+        type: "disease",
+        description: "Neurodegenerative movement disorder. Some pesticide exposures (for example paraquat) are associated with increased risk in observational meta-analyses.",
+        connected_to: ["neurological_disorders"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/31476981/"
+        ]
+    },
+    {
+        id: "guillain_barre_syndrome",
+        name: "Guillain-Barre Syndrome",
+        type: "disease",
+        aliases: ["GBS"],
+        description: "Acute immune-mediated neuropathy often triggered by infections; Campylobacter is a classic antecedent infection.",
+        connected_to: ["neurological_disorders", "foodborne_infection", "campylobacter"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/30444562/"
+        ]
+    },
+    {
+        id: "aneurysm",
+        name: "Aneurysm",
+        type: "disease",
+        description: "Abnormal dilation of a blood vessel; rupture risk relates to vascular wall integrity and blood pressure.",
+        connected_to: ["hypertension", "cardiovascular_disease"]
+    },
+    {
+        id: "brain_internal_hemorrhage",
+        name: "Brain Internal Hemorrhage",
+        type: "disease",
+        aliases: ["Intracerebral hemorrhage", "Brain hemorrhage"],
+        description: "Bleeding within the brain tissue; can occur from hypertension, vascular malformations, and anticoagulant exposures.",
+        connected_to: ["stroke", "hypertension", "brodifacoum", "bromadiolone"]
+    },
+    {
+        id: "diabetes",
+        name: "Diabetes",
+        type: "disease",
+        description: "Chronic metabolic disease with vascular, renal, eye and neuropathy complications; environmental exposures are under study as potential risk modifiers.",
+        connected_to: ["kidney_disease", "stroke", "cataract"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/26000288/",
+            "https://pubmed.ncbi.nlm.nih.gov/35970987/",
+            "https://pubmed.ncbi.nlm.nih.gov/34628255/"
+        ]
+    },
+    {
+        id: "cataract",
+        name: "Cataract",
+        type: "disease",
+        description: "Lens opacity causing visual impairment; diabetes is a common risk factor.",
+        connected_to: ["diabetes"]
+    },
+    {
+        id: "insomnia",
+        name: "Insomnia",
+        type: "disease",
+        description: "Difficulty falling or staying asleep; may be worsened by stress, illness, and autonomic dysfunction.",
+        connected_to: ["pots"]
+    },
+    {
+        id: "mast_cell_activation_syndrome",
+        name: "MCAS",
+        type: "disease",
+        aliases: ["Mast Cell Activation Syndrome"],
+        description: "Syndrome describing recurrent mast-cell mediator symptoms; diagnostic criteria and overlap with other syndromes are actively debated.",
+        connected_to: ["immune_dysfunction", "eczema", "rosacea", "pots"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/31267471/"
+        ]
+    },
+    {
+        id: "pots",
+        name: "POTS",
+        type: "disease",
+        aliases: ["Postural Orthostatic Tachycardia Syndrome"],
+        description: "Autonomic disorder featuring orthostatic tachycardia and symptoms like dizziness and sometimes syncope; comorbidity with hypermobility syndromes is reported.",
+        connected_to: ["sudden_loss_of_consciousness", "insomnia", "hypermobile_ehlers_danlos_syndrome", "hypermobility_spectrum_disorder", "mast_cell_activation_syndrome"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/31267471/"
+        ]
+    },
+    {
+        id: "joint_hypermobility_disorders",
+        name: "JHD",
+        type: "disease",
+        aliases: ["Joint Hypermobility Disorders"],
+        description: "Umbrella node for joint hypermobility-related disorders; included to connect HSD and hEDS.",
+        connected_to: ["hypermobility_spectrum_disorder", "hypermobile_ehlers_danlos_syndrome"]
+    },
+    {
+        id: "hypermobility_spectrum_disorder",
+        name: "HSD",
+        type: "disease",
+        aliases: ["Hypermobility Spectrum Disorder"],
+        description: "Hypermobility spectrum disorder; can feature pain, instability and systemic symptoms in some people.",
+        connected_to: ["joint_hypermobility_disorders", "pots", "hernia"]
+    },
+    {
+        id: "hypermobile_ehlers_danlos_syndrome",
+        name: "hEDS",
+        type: "disease",
+        aliases: ["hypermobile Ehlers-Danlos Syndrome"],
+        description: "Heritable connective tissue disorder subtype defined clinically; can be associated with joint instability and some systemic features.",
+        connected_to: ["joint_hypermobility_disorders", "pots", "hernia"]
+    },
+    {
+        id: "inflammatory_bowel_disease",
+        name: "Inflammatory Bowel Disease",
+        type: "disease",
+        aliases: ["IBD"],
+        description: "Chronic intestinal inflammatory disorders including Crohn's disease and ulcerative colitis; environmental factors are investigated as triggers/modifiers.",
+        connected_to: ["gastrointestinal_disease", "autoimmune_disorders", "crohns_disease", "ulcerative_colitis", "pfas"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/34383611/",
+            "https://pubmed.ncbi.nlm.nih.gov/23735465/"
+        ]
+    },
+    {
+        id: "crohns_disease",
+        name: "Crohn's Disease",
+        type: "disease",
+        description: "Inflammatory bowel disease subtype affecting the GI tract; extraintestinal manifestations can occur.",
+        connected_to: ["inflammatory_bowel_disease"]
+    },
+    {
+        id: "ulcerative_colitis",
+        name: "Ulcerative Colitis",
+        type: "disease",
+        description: "Inflammatory bowel disease subtype affecting the colon/rectum.",
+        connected_to: ["inflammatory_bowel_disease"]
+    },
+    {
+        id: "appendicitis",
+        name: "Appendicitis",
+        type: "disease",
+        description: "Acute inflammation of the appendix; infectious gastroenteritis can sometimes mimic or contribute to appendiceal inflammation.",
+        connected_to: ["gastrointestinal_disease", "foodborne_infection", "campylobacter"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/32499276/"
+        ]
+    },
+    {
+        id: "periodontitis",
+        name: "Periodontitis",
+        type: "disease",
+        description: "Inflammatory gum disease associated with tooth loss; heavy-metal exposure biomarkers have been associated in some studies.",
+        connected_to: ["tooth_loss"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/40481461/"
+        ]
+    },
+    {
+        id: "tooth_decay",
+        name: "Tooth Decay (Dental Caries)",
+        type: "disease",
+        aliases: ["Dental caries", "Cavities"],
+        description: "Tooth enamel/dentin destruction from bacterial acid; risk increases with sugar exposure and reduced oral defenses.",
+        connected_to: ["tooth_loss"]
+    },
+    {
+        id: "tooth_loss",
+        name: "Tooth Loss",
+        type: "disease",
+        description: "Loss of teeth from caries, periodontitis, trauma or systemic disease; included for contaminant-to-oral-health hypothesis mapping.",
+        connected_to: ["periodontitis", "tooth_decay"]
+    },
+    {
+        id: "hormonal_imbalance",
+        name: "Hormonal Imbalance",
+        type: "disease",
+        description: "Non-specific endocrine disruption concept node; used to connect endocrine-active contaminants with downstream outcomes.",
+        connected_to: ["endocrine_reproductive_effects", "miscarriage", "infertility", "phthalates", "bisphenol_a", "pfas"]
+    },
+    {
+        id: "miscarriage",
+        name: "Miscarriage",
+        type: "disease",
+        aliases: ["Pregnancy loss", "Spontaneous abortion"],
+        description: "Pregnancy loss outcome; multiple contaminant classes (for example PFAS, BPA, phthalates, and some pesticides/heavy metals) are investigated for association.",
+        connected_to: ["endocrine_reproductive_effects", "hormonal_imbalance", "bisphenol_a", "phthalates", "pfas"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/29671677/",
+            "https://pubmed.ncbi.nlm.nih.gov/32866875/"
+        ]
+    },
+    {
+        id: "prostate_issues",
+        name: "Prostate Issues",
+        type: "disease",
+        description: "Broad node covering benign prostatic hyperplasia/prostatitis and prostate cancer concerns.",
+        connected_to: ["cancer"]
+    },
+    {
+        id: "testicular_cancer",
+        name: "Testicular Cancer",
+        type: "disease",
+        description: "Cancer of the testes; PFAS exposure has been linked to testicular cancer in some epidemiologic literature.",
+        connected_to: ["cancer", "pfas"]
+    },
+    {
+        id: "breast_cancer",
+        name: "Breast Cancer",
+        type: "disease",
+        description: "Common cancer subtype; multiple endocrine-active exposures are investigated as potential risk modifiers.",
+        connected_to: ["cancer"]
+    },
+    {
+        id: "non_hodgkin_lymphoma",
+        name: "Non-Hodgkin Lymphoma",
+        type: "disease",
+        aliases: ["NHL"],
+        description: "Lymphoid malignancies. Glyphosate epidemiology includes mixed findings across meta-analyses.",
+        connected_to: ["cancer", "glyphosate"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/31342895/",
+            "https://pubmed.ncbi.nlm.nih.gov/34142676/"
+        ]
+    },
+    {
+        id: "ovarian_cancer",
+        name: "Ovarian Cancer",
+        type: "disease",
+        description: "Cancer subtype; included for exploratory contaminant linkage mapping.",
+        connected_to: ["cancer"]
+    },
+    {
+        id: "lung_cancer",
+        name: "Lung Cancer",
+        type: "disease",
+        description: "Cancer subtype. Arsenic is a known carcinogen linked to lung cancer in exposed populations.",
+        connected_to: ["cancer", "arsenic"]
+    },
+    {
+        id: "colon_cancer",
+        name: "Colon Cancer",
+        type: "disease",
+        description: "Cancer subtype affecting the colon.",
+        connected_to: ["cancer", "gastrointestinal_disease"]
+    },
+    {
+        id: "rectal_cancer",
+        name: "Rectal Cancer",
+        type: "disease",
+        description: "Cancer subtype affecting the rectum.",
+        connected_to: ["cancer", "gastrointestinal_disease"]
+    },
+    {
+        id: "rosacea",
+        name: "Rosacea",
+        type: "disease",
+        description: "Chronic inflammatory facial skin disorder; triggers vary and may include immune and neurovascular factors.",
+        connected_to: ["immune_dysfunction"]
+    },
+    {
+        id: "eczema",
+        name: "Eczema",
+        type: "disease",
+        aliases: ["Atopic dermatitis"],
+        description: "Inflammatory skin disease with immune and barrier dysfunction features.",
+        connected_to: ["immune_dysfunction"]
+    },
+    {
+        id: "psoriasis",
+        name: "Psoriasis",
+        type: "disease",
+        description: "Immune-mediated inflammatory skin disease.",
+        connected_to: ["immune_dysfunction", "autoimmune_disorders"]
+    },
+    {
+        id: "vitiligo",
+        name: "Vitiligo",
+        type: "disease",
+        description: "Autoimmune-associated depigmentation disorder.",
+        connected_to: ["autoimmune_disorders"]
+    },
+    {
+        id: "seborrheic_dermatitis",
+        name: "Seborrheic Dermatitis",
+        type: "disease",
+        description: "Inflammatory skin condition often involving scalp/face; can overlap with fungal/immune factors.",
+        connected_to: ["immune_dysfunction"]
+    },
+    {
+        id: "skin_fungal_infections",
+        name: "Skin Fungal Infections",
+        type: "disease",
+        description: "Superficial fungal infections of skin; immune and moisture factors influence risk.",
+        connected_to: ["immune_dysfunction"]
+    },
+    {
+        id: "skin_dpn",
+        name: "Skin DPN",
+        type: "disease",
+        aliases: ["Dermatosis papulosa nigra"],
+        description: "Benign pigmented skin papules; included for dermatologic symptom mapping."
+    },
+    {
+        id: "premature_osteoporosis",
+        name: "Premature Osteoporosis",
+        type: "disease",
+        description: "Low bone density/fragility fractures at younger ages; heavy metals and chronic inflammation are potential contributors.",
+        connected_to: ["bone_loss", "cadmium"]
+    },
+    {
+        id: "hernia",
+        name: "Hernia",
+        type: "disease",
+        description: "Tissue/organ protrusion through a weak point; connective tissue disorders can increase risk.",
+        connected_to: ["hypermobile_ehlers_danlos_syndrome", "hypermobility_spectrum_disorder"]
+    },
+    {
+        id: "stone_in_salivary_gland",
+        name: "Stone in Salivary Gland",
+        type: "disease",
+        aliases: ["Sialolithiasis"],
+        description: "Salivary gland stone causing swelling/pain, often related to dehydration and salivary stasis."
+    },
+    {
+        id: "babesia",
+        name: "Babesia",
+        type: "disease",
+        aliases: ["Babesiosis"],
+        description: "Tick-borne parasitic infection; included for symptom mapping (for example fatigue/brain fog) even though foodborne transmission is not typical."
     },
 
     {
@@ -2303,6 +2832,182 @@ const DATA_PART_2 = [
         type: "symptom",
         description: "Vestibular and neurological symptom."
     },
+    {
+        id: "brain_fog",
+        name: "Brain Fog",
+        type: "symptom",
+        description: "Non-specific cognitive symptom reported in multiple conditions including autonomic dysfunction and inflammatory illness.",
+        connected_to: ["neurological_disorders", "pots", "mast_cell_activation_syndrome", "babesia"]
+    },
+    {
+        id: "blindness",
+        name: "Blindness",
+        type: "symptom",
+        description: "Vision loss; included for mapping optic/eye involvement hypotheses.",
+        connected_to: ["cataract"]
+    },
+    {
+        id: "eyelid_inflammation",
+        name: "Eyelid Inflammation",
+        type: "symptom",
+        aliases: ["Blepharitis"],
+        description: "Inflammation of eyelid margins; can be associated with skin conditions and chronic irritation.",
+        connected_to: ["rosacea", "eczema", "seborrheic_dermatitis"]
+    },
+    {
+        id: "sclera_inflammation",
+        name: "Sclera Inflammation",
+        type: "symptom",
+        aliases: ["Scleritis"],
+        description: "Inflammation of scleral tissues; can be associated with autoimmune disorders and IBD.",
+        connected_to: ["autoimmune_disorders", "inflammatory_bowel_disease"]
+    },
+    {
+        id: "sudden_loss_of_consciousness",
+        name: "Sudden Loss of Consciousness",
+        type: "symptom",
+        aliases: ["Syncope", "Fainting"],
+        description: "Transient loss of consciousness; can occur with arrhythmia, stroke, or autonomic dysfunction (including POTS).",
+        connected_to: ["pots", "stroke", "arrhythmia"]
+    },
+    {
+        id: "corn_at_bottom_of_foot",
+        name: "Corn at Bottom of Foot",
+        type: "symptom",
+        aliases: ["Plantar corn"],
+        description: "Pressure-related skin lesion; neuropathy and foot biomechanics can contribute.",
+        connected_to: ["diabetes"]
+    },
+    {
+        id: "increase_in_creatinine",
+        name: "Increase in Creatinine",
+        type: "symptom",
+        description: "Lab signal that can indicate kidney injury or dehydration; included for renal-toxicant mapping.",
+        connected_to: ["kidney_disease"]
+    },
+    {
+        id: "decrease_in_creatinine",
+        name: "Decrease in Creatinine",
+        type: "symptom",
+        description: "Lab change that can reflect low muscle mass or altered physiology; included for completeness in lab-marker mapping.",
+        connected_to: ["kidney_disease"]
+    },
+    {
+        id: "sodium_level_fluctuation",
+        name: "Sodium Level Fluctuation",
+        type: "symptom",
+        description: "Electrolyte disturbances can occur with endocrine, renal, and medication-related causes.",
+        connected_to: ["kidney_disease", "endocrine_reproductive_effects"]
+    },
+    {
+        id: "itching_at_rectum",
+        name: "Itching at Rectum",
+        type: "symptom",
+        description: "Perianal itching; can relate to irritation, infection, hemorrhoids, or GI issues.",
+        connected_to: ["gastrointestinal_disease"]
+    },
+    {
+        id: "flat_stools",
+        name: "Flat Stools",
+        type: "symptom",
+        description: "Change in stool caliber; included for colorectal/GI mapping.",
+        connected_to: ["gastrointestinal_disease", "colon_cancer", "rectal_cancer"]
+    },
+    {
+        id: "thin_stools",
+        name: "Thin Stools",
+        type: "symptom",
+        description: "Change in stool caliber; included for colorectal/GI mapping.",
+        connected_to: ["gastrointestinal_disease", "colon_cancer", "rectal_cancer"]
+    },
+    {
+        id: "dark_stools",
+        name: "Dark Stools",
+        type: "symptom",
+        aliases: ["Melena (black tarry stools)"],
+        description: "Dark/black stools can indicate upper GI bleeding or dietary/medication causes.",
+        connected_to: ["gastrointestinal_disease", "brodifacoum", "bromadiolone"]
+    },
+    {
+        id: "blood_in_urine",
+        name: "Blood in Urine",
+        type: "symptom",
+        aliases: ["Hematuria"],
+        description: "Can occur with kidney disease, stones, infection, or bleeding disorders (including anticoagulant rodenticide poisoning).",
+        connected_to: ["kidney_disease", "brodifacoum", "bromadiolone"]
+    },
+    {
+        id: "foamy_urine",
+        name: "Foamy Urine",
+        type: "symptom",
+        description: "May indicate proteinuria; included for kidney-disease mapping.",
+        connected_to: ["kidney_disease"]
+    },
+    {
+        id: "blood_in_stools",
+        name: "Blood in Stools",
+        type: "symptom",
+        aliases: ["Hematochezia"],
+        description: "Visible blood in stool; can indicate hemorrhoids, infection, IBD, or colorectal cancer and can occur with bleeding disorders.",
+        connected_to: ["gastrointestinal_disease", "inflammatory_bowel_disease", "colon_cancer", "rectal_cancer", "brodifacoum", "bromadiolone"]
+    },
+    {
+        id: "hair_turning_grey",
+        name: "Hair Turning Grey",
+        type: "symptom",
+        description: "Premature greying can have genetic, nutritional, oxidative-stress and medical contributors.",
+        connected_to: ["arsenic"]
+    },
+    {
+        id: "hair_loss",
+        name: "Hair Loss",
+        type: "symptom",
+        aliases: ["Alopecia"],
+        description: "Hair loss can be multifactorial (thyroid, iron, autoimmune, stress, and toxicant exposures).",
+        connected_to: ["arsenic", "autoimmune_disorders"]
+    },
+    {
+        id: "cherry_angioma",
+        name: "Cherry Angioma",
+        type: "symptom",
+        description: "Common benign vascular skin papules; included for dermatologic mapping."
+    },
+    {
+        id: "dark_lumps_on_skin",
+        name: "Dark Lumps on Skin",
+        type: "symptom",
+        description: "Non-specific skin finding; included for dermatologic mapping.",
+        connected_to: ["skin_dpn"]
+    },
+    {
+        id: "pimples_on_skin",
+        name: "Pimples on Skin",
+        type: "symptom",
+        aliases: ["Acne-like lesions"],
+        description: "Non-specific inflammatory skin lesions; can be influenced by hormones and irritation.",
+        connected_to: ["hormonal_imbalance"]
+    },
+    {
+        id: "scalloped_tongue",
+        name: "Scalloped Tongue",
+        type: "symptom",
+        description: "Indentations along tongue edges; can be seen with swelling/pressure or oral habits.",
+        connected_to: ["gastrointestinal_disease"]
+    },
+    {
+        id: "white_tongue_surface",
+        name: "White Tongue Surface",
+        type: "symptom",
+        description: "White coating can reflect oral candidiasis, debris, dehydration or inflammation; included for oral-health mapping.",
+        connected_to: ["skin_fungal_infections", "immune_dysfunction"]
+    },
+    {
+        id: "testicular_pain",
+        name: "Testicular Pain",
+        type: "symptom",
+        description: "Non-specific symptom; can be due to infection, torsion, varicocele, inflammation or malignancy.",
+        connected_to: ["testicular_cancer", "prostate_issues"]
+    },
 
     {
         id: "selenium_zinc_support",
@@ -2310,6 +3015,17 @@ const DATA_PART_2 = [
         type: "remedy",
         description: "Adequate selenium and zinc intake supports antioxidant defense and heavy-metal response pathways.",
         connected_to: ["mercury", "lead", "cadmium", "arsenic", "zinc_excess"]
+    },
+    {
+        id: "tryptophan_melatonin_sleep_support",
+        name: "Tryptophan/Melatonin Sleep Support (Milk)",
+        type: "remedy",
+        description: "Milk contains tryptophan (melatonin precursor) and some dairy products may contain measurable melatonin; small trials have explored sleep benefits in specific formulations.",
+        connected_to: ["milk", "insomnia"],
+        citations: [
+            "https://pubmed.ncbi.nlm.nih.gov/26501383/",
+            "https://pubmed.ncbi.nlm.nih.gov/39189195/"
+        ]
     },
     {
         id: "medical_chelation",

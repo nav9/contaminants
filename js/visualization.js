@@ -97,6 +97,8 @@ const VisualizationModule = (function () {
                 const categories = {
                     'disease': { angle: null, radius: 0 },
                     'pesticide': { angle: 0, radius: 1 },
+                    'fungicide': { angle: 0, radius: 1 },
+                    'herbicide': { angle: 0, radius: 1 },
                     'poison': { angle: 0, radius: 1 },
                     'contaminant': { angle: 0, radius: 1 },
                     'heavy-metal': { angle: 45, radius: 1 },
