@@ -77,7 +77,7 @@ html {
     top: 20px;
     left: 20px;
     width: 350px;
-    padding: 10px;
+    padding: 10px 44px 10px 10px;/*space for toggle button*/
     background: rgba(30, 30, 30, 0.8);
     border-radius: 8px;
     border: 1px solid var(--border-color);
@@ -122,7 +122,7 @@ html {
 }
 
 #search-content #search-bar-container {
-    padding-right: 34px;
+    padding-right: 0;
 }
 
 #search-bar-container {
